@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-content>
+
+    <!--Search bar-->
+    <mat-card id="searchCard">
+      <mat-card-content>
+
+        <div id="searchContainer">
+          <div id="searchIconContainer">
+            <mat-icon id="searchIcon">search</mat-icon>
+          </div>
+          <div id="searchBarContainer">
+            <input placeholder="search here..." id="searchBar" [(ngModel)]="searching" [matAutocomplete]="auto">
+
+            <mat-autocomplete #auto="matAutocomplete">
+              <div *ngIf="searchFor== 'customer name'">
+                <mat-option *ngFor="let user of allUsers | filter: searching: 'name'" [value]="user.name" (click)="search()">
+                  <span style="color: rgb(20, 120, 180)">{{user.userId}}</span> |
+                  <span>{{user.name}}</span>
+                  <span *ngIf="user.mobileNo">
+                    | <small style="color: rgb(20, 120, 180)"> {{user.mobileNo}}</small>
+                  </span>
+                </mat-option>
+              </div>
+              <div *ngIf="searchFor== 'customer id'">
+                <mat-option *ngFor="let user of allUsers | filter: searching: 'userId'" [value]="user.userId" (click)="search()">
+                  <span style="color: rgb(20, 120, 180)">{{user.userId}}</span> |
+                  <span>{{user.name}}</span>
+                  <span *ngIf="user.mobileNo">
+                    | <small style="color: rgb(20, 120, 180)"> {{user.mobileNo}}</small>
+                  </span>
+                </mat-option>
+              </div>
+              <div *ngIf="searchFor== 'work id'">
+                <mat-option *ngFor="let user of allWork | filter: searching: 'workId'" [value]="user.workId" (click)="search()">
+                  <span style="color: rgb(20, 120, 180)">{{user.workId}}</span> |
+                  <span>{{user.name}}</span>
+                  <span *ngIf="user.mobileNo">
+                    | <small style="color: rgb(20, 120, 180)"> {{user.mobileNo}}</small>
+                  </span>
+                </mat-option>
+              </div>
+            </mat-autocomplete>
+
+            <mat-select matSuffix id="searchFor" [(ngModel)]="searchFor" required>
+              <mat-option value="customer name" (click)="searchForChange('customer name')" >Customer Name</mat-option>
+              <mat-option value="customer id" (click)="searchForChange('customer id')" >Customer Id</mat-option>
+              <mat-option value="work id" (click)="searchForChange('work id')" >Work Id</mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+    <!--Search bar-->
+    <!--Add new Work-->
+    <button mat-raised-button (click)="pageChange('newWork')" id="addNewWork">
+      <mat-icon>add</mat-icon> Add new work
+    </button>
+    <!--Add new Work-->
+    <!--Page conent-->
+    <app-news *ngIf="pageShowing== 'news'"></app-news>
+    <app-search *ngIf="pageShowing== 'search'" [searchingData]="{search: searching, by: searchFor}" (goBackPage)="getPageBack($event)"></app-search>
+    <app-add-work *ngIf="pageShowing== 'newWork'" (goBackPage)="getPageBack($event)"></app-add-work>
+    <!--Page conent-->
+  </mat-card-content>
+</mat-card>

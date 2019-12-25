@@ -1,0 +1,162 @@
+#searchCard {
+  display: inline-block !important;
+  padding: 9px !important;
+  margin: 0 !important;
+  width: 87% !important;
+
+  @media only screen and (min-width: 850px) and (max-width: 1225px) {
+    width: 83% !important;
+  }
+
+  @media only screen and (min-width: 575px) and (max-width: 850px) {
+    width: 100% !important;
+  }
+
+  @media only screen and (min-width: 340px) and (max-width: 575px) {
+    width: 100% !important;
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 340px) {
+    width: 100% !important;
+  }
+
+  #searchContainer {
+    display: inline-block !important;
+    width: 100% !important;
+
+    @media only screen and (min-width: 850px) and (max-width: 1225px) {
+      width: 97% !important;
+    }
+
+    @media only screen and (min-width: 575px) and (max-width: 850px) {
+      width: 100% !important;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 575px) {
+      width: 100% !important;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      width: 100% !important;
+    }
+
+
+    #searchIconContainer {
+      display: inline-block !important;
+      width: 30px !important;
+      height: 30px !important;
+
+      @media only screen and (min-width: 340px) and (max-width: 575px) {
+        display: none !important;
+      }
+
+      @media only screen and (min-width: 0px) and (max-width: 340px) {
+        display: none !important;
+      }
+
+      #searchIcon {
+        color: rgb(20, 120, 180) !important;
+        height: 20px;
+        width: 20px;
+        font-size: 20px;
+        margin: 5px 5px !important;
+      }
+    }
+
+    #searchBarContainer {
+      display: inline-block !important;
+      width: 96.98% !important;
+
+      @media only screen and (min-width: 850px) and (max-width: 1225px) {
+        width: 94% !important;
+      }
+
+      @media only screen and (min-width: 575px) and (max-width: 850px) {
+        width: 94% !important;
+      }
+
+      @media only screen and (min-width: 340px) and (max-width: 575px) {
+        width: 100% !important;
+      }
+
+      @media only screen and (min-width: 0px) and (max-width: 340px) {
+        width: 100% !important;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      #searchBar {
+        border: none !important;
+        color: black !important;
+        background-color: white;
+        padding: 5px !important;
+        width: 86% !important;
+        font-size: 16px;
+
+        @media only screen and (min-width: 850px) and (max-width: 1225px) {
+        }
+
+        @media only screen and (min-width: 415px) and (max-width: 850px) {
+        }
+
+        @media only screen and (min-width: 340px) and (max-width: 415px) {
+        }
+
+        @media only screen and (min-width: 0px) and (max-width: 340px) {
+        }
+      }
+    }
+  }
+
+  #searchFor {
+    display: inline-block !important;
+    margin-left: 5px !important;
+    padding: 0 !important;
+    width: 130px;
+
+    @media only screen and (min-width: 850px) and (max-width: 1350px) {
+      //float: right;
+      //margin: 14.5px;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 850px) {
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+    }
+  }
+}
+
+#addNewWork {
+  background-color: rgb(20, 120, 180) !important;
+  color: white !important;
+  height: 50px !important;
+  margin-left: 10px !important;
+  margin-bottom: 100px !important;
+  width: 140px !important;
+
+  @media only screen and (min-width: 850px) and (max-width: 1225px) {
+  }
+
+  @media only screen and (min-width: 575px) and (max-width: 850px) {
+    margin-top: 10px !important;
+    margin-left: 0px !important;
+  }
+
+  @media only screen and (min-width: 415px) and (max-width: 575px) {
+    margin-top: 10px !important;
+    margin-left: 0px !important;
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 415px) {
+    margin-top: 10px !important;
+    margin-left: 0px !important;
+    width: 100% !important;
+  }
+}
+

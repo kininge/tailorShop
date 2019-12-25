@@ -1,0 +1,251 @@
+<!--new work-->
+<div id="newWork">
+  <mat-card>
+    <mat-card-header>
+      <button mat-icon-button class="closing" (click)="goBack()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-card-title>New Work</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-horizontal-stepper linear="true" #stepper id="Work">
+        <mat-step>
+          <div id="stepOne" class="steps">
+            <div class="title">
+              <h3>Enter you details</h3>
+            </div>
+            <br />
+            <br />
+            <form #customerIdForm="ngForm">
+              <mat-form-field id="searchCustomer">
+                <mat-label>Customer</mat-label>
+                <input matInput name="customerName" paceholder="Customer Name" [matAutocomplete]="auto" [(ngModel)]="customerId" required #customerid="ngModel" />
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let user of allUsers | filter: customerId: 'name'" [value]="user.userId">
+                    <span>{{user.name}}</span> | <small style="color: rgb(20, 120, 180)">{{user.mobileNo}}</small>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+              <mat-form-field class="deliveryDate">
+                <input matInput [matDatepicker]="picker" [min]="today" placeholder="Delivery Date" name="deliveryDate" [(ngModel)]="deliveryDate" #date disabled required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi disabled="false" #picker></mat-datepicker>
+              </mat-form-field>
+              <br />
+              <br />
+
+              <div class="actions">
+                <button [disabled]="!deliveryDate || !customerId" [style.color]="(deliveryDate && customerId) ? 'rgb(20, 120, 180)' : gray" (click)="getUserDetails()" mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <div id="stepTwo">
+
+            <div *ngFor="let product of products; ind as index;">
+              <h3 class="title">
+                Enter Product
+                <span style="color: rgb(20, 120, 180)">{{ product.productId }}</span>'s Details
+                <span *ngIf="product.productId> 1">
+                  <button mat-icon-button mat-raised-button style="margin-left: 30px" (click)="removeLastProduct(product.productId)">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </span>
+              </h3>
+              <br />
+              <br />
+
+
+              <!--Initial data-->
+              <mat-form-field class="clothType">
+                <mat-select placeholder="Product Type" name="productType" #type="ngModel" [(ngModel)]="product.clothType" required>
+                  <mat-option value="true">Upper Body</mat-option>
+                  <mat-option value="false">Lower Body</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="clothName">
+                <input matInput type="text" placeholder="Product Name" [matAutocomplete]="auto" name="productName" [(ngModel)]="product.clothName" #name="ngModel" required />
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let pro of productNameList" [value]="pro">{{ pro }}</mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+              <mat-form-field *ngIf="product.clothType==='false' || product.clothType==='true'" class="clothPrice">
+                <input matInput type="number" placeholder="Cloth Price" name="clothPrice" [(ngModel)]="product.price" #price="ngModel" required />
+              </mat-form-field>
+              <!--Initial data-->
+              <!--measurments data-->
+              <div *ngIf="product.clothType==='true'" class="upper">
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Height" name="upperHeight" [(ngModel)]="product.upper.height" #upperHeight />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Front" name="upperFront" [(ngModel)]="product.upper.front" #upperFront />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Collar" name="upperCollar" [(ngModel)]="product.upper.collar" #upperCollar />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Shoulder" name="upperShoulder" [(ngModel)]="product.upper.shoulder" #upperShoulder />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Sleeve" name="upperSleeve" [(ngModel)]="product.upper.sleeve" #upperSleeve />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Biceps" name="upperSleeveWidth" [(ngModel)]="product.upper.sleeveWidth" #upperSleeveWidth />
+                </mat-form-field>
+                <mat-form-field class="lastItem">
+                  <input matInput type="number" placeholder="Cuff" name="upperCuff" [(ngModel)]="product.upper.cuff" #upperCuff />
+                </mat-form-field>
+              </div>
+
+              <div *ngIf="product.clothType==='false'" class="lower">
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Height" name="lowerHeight" [(ngModel)]="product.lower.height" #lowerHeight />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Knee" name="lowerKnee" [(ngModel)]="product.lower.knee" #lowerKnee />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Waist" name="lowerWaist" [(ngModel)]="product.lower.waist" #lowerWaist />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Seat" name="lowerSeat" [(ngModel)]="product.lower.seat" #lowerSeat />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="Thigh" name="lowerThigh" [(ngModel)]="product.lower.thigh" #lowerThigh />
+                </mat-form-field>
+                <mat-form-field class="items">
+                  <input matInput type="number" placeholder="bottom" name="lowerBottom" [(ngModel)]="product.lower.bottom" #lowerBottom />
+                </mat-form-field>
+                <mat-form-field class="lastItem">
+                  <input matInput type="number" placeholder="Underline" name="lowerUnderline" [(ngModel)]="product.lower.underline" #lowerUnderline />
+                </mat-form-field>
+              </div>
+
+              <div *ngIf="product.clothType==='false' || product.clothType==='true'">
+                <mat-form-field class="remark">
+                  <input matInput type="text" placeholder="Notes" name="remark" [(ngModel)]="product.remark" #remark />
+                </mat-form-field>
+              </div>
+              <!--measurments data-->
+            </div>
+
+            <br />
+            <div class="actions">
+              <button class="back" mat-button matStepperPrevious>Back</button>
+              <button type="button" mat-button class="addNewProduct" (click)="addNewProduct()"><b>Add new Product</b></button>
+              <button mat-button class="next" matStepperNext>Next</button>
+            </div>
+            
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <div id="advancePayment">
+            <form>
+              <mat-form-field>
+                <mat-label>Advance payment</mat-label>
+                <input matInput type="number" name="advancePayment" paceholder="advance" [(ngModel)]="advance" #add="ngModel" required/>
+                <span matSuffix>&#x20B9;</span>
+                <mat-hint  *ngIf="add< 0" style="color: red;">Advance should be gerter than or equal to 0</mat-hint>
+                <mat-hint *ngIf="add.hasError('required')" style="color: red;">Advance can't be empty</mat-hint>
+              </mat-form-field>
+
+              <br />
+              <br />
+
+              <div class="actions">
+                <button (click)="createWork()" [disabled]="(advance< 0) || !advance" [style.color]="((advance>= 0) && advance) ? 'rgb(20, 120, 180)' : gray" mat-button matStepperNext>Create Work</button>
+              </div>
+            </form>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <div id="stepThree">
+            <mat-card>
+              <mat-card-content style="text-align: justify">
+
+                <img mat-card-image src="assets\image\StichwellLogoBlueBlack.png" alt="logo" style="width: 180px !important; margin: -8px 0 10px 0px !important;">
+                <h6 id="today">{{ today| date }}</h6>
+                <hr>
+
+                <div id="lineOne">
+                  <div id="workIdPrint" class="member">
+                    <p>{{ workId }}</p>
+                    <small>Work Id</small>
+                  </div>
+                  <div id="customerNamePrint" class="member">
+                    <p>{{ customerTableDetails.name| stringFirstAndLast }}</p>
+                    <small>Customer Name</small>
+                  </div>
+                </div>
+
+                <div id="lineTwo">
+                  <div id="deliveryDatePrint" class="member">
+                    <p>{{ deliveryDate | date }}</p>
+                    <small>Delivery Date</small>
+                  </div>
+                  <div id="advance" class="member">
+                    <p>{{ advance }}</p>
+                    <small>Advance Payment</small>
+                  </div>
+                </div>
+
+                <br>
+                <h5 id="workDetails">Work Details:</h5>
+                <hr>
+                <div id="display" *ngFor="let prod of products">
+                  <p>
+                    <span id="displayId">{{ prod.productId }}</span>
+                    <span id="displayName"><b>{{ prod.clothName }}</b></span>
+                    <span id="displayPrice">&#x20B9;<span style="color: rgb(20, 120, 180)">{{ prod.price }}</span></span>
+                  </p>
+                  <br>
+                </div>
+                <hr>
+                <small>
+                  <span class="startPart">Item Total</span>
+                  <span class="endPart">&#x20B9;<span style="color: rgb(20, 120, 180)">{{ getTotalCost() }}</span></span>
+                </small>
+                <br>
+                <small>
+                  <span class="startPart">Advance Payment</span>
+                  <span class="endPart">- &#x20B9; <span style="color: rgb(20, 120, 180)">{{ advance }}</span></span>
+                </small>
+                <br>
+                <hr>
+                <div id="final">
+                  <p>
+                    <b>
+                      <span class="startPart">Total</span>
+                      <span class="endPart">&#x20B9; {{ getTotalCost()- advance }}</span>
+                    </b>
+                  </p>
+                </div>
+
+              </mat-card-content>
+            </mat-card>
+
+            <div Id="pavtiSending">
+              <section class="example-section">
+                <mat-checkbox [(ngModel)]="stichwellApp" [disabled]="true"> Stichwell App</mat-checkbox>
+                <mat-checkbox [(ngModel)]="whatsAppChecked" [disabled]="!customerTableDetails.isOnWhatsApp"> WhatsApp</mat-checkbox>
+                <mat-checkbox [(ngModel)]="emailChecked" [disabled]="!customerTableDetails.emailAddress"> Email</mat-checkbox>
+              </section>
+              <br>
+              <button mat-raised-button (click)="goBack()">Send the recipt</button>
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </mat-card-content>
+  </mat-card>
+</div>
+<!--new work-->

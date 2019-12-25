@@ -1,0 +1,6 @@
+<div id="container">
+  <app-income-register-short *ngIf="user.userType1== 'master' || user.userType1== 'creater' || user.userType1== 'employee'"></app-income-register-short>
+  <app-cloth-details *ngIf="user.userType1== 'master' || user.userType1== 'creater'"></app-cloth-details>
+  <app-task-details *ngIf="user.userType1== 'master' || user.userType1== 'employee'"></app-task-details>
+  <app-customer *ngIf="user.userType1== 'customer'"></app-customer>
+</div>

@@ -1,0 +1,550 @@
+ <!--search-->
+<div id="search">
+  <!--Customer Name/ Customer Id/ Work Id-->
+  <!--Bio-->
+  <mat-card id="customerDetails" *ngIf="customer">
+    <mat-card-header>
+      <button mat-icon-button class="closing" (click)="goBack()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-card-title>Customer Details</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div id="birthDateAndIcon" class="member">
+        <mat-icon id="future">person</mat-icon>
+        <div id="birthDateContainer">
+          <button id="cake" mat-icon-button><mat-icon>cake</mat-icon></button>
+          <small id="birthDate">{{ customer.birthdate | date }}</small>
+        </div>
+      </div>
+
+      <div id="restCustomerContent" class="member">
+
+        <div id="lineOne">
+          <div id="customerId" class="member">
+            <p><b>{{ customer.userId }}</b></p>
+            <small>Customer Id</small>
+          </div>
+
+          <div id="customerName" class="member">
+            <p><b>{{ customer.name }}</b></p>
+            <small>Customer Name</small>
+          </div>
+        </div>
+
+        <br />
+
+        <div id="lineTwo">
+          <div id="mobileNo" class="member">
+            <p><b>{{ customer.mobileNo }}</b></p>
+            <small>Mobile Number</small>
+          </div>
+
+          <div id="emailAddress" class="member">
+            <p><b>{{ customer.emailAddress }}</b></p>
+            <small>Email Address</small>
+          </div>
+        </div>
+
+        <br />
+
+        <div id="address" class="member">
+          <p><b>{{ customer.address }}</b></p>
+          <small>Address</small>
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <!--Bio-->
+  <br/>
+  <br/>
+  <!--Work In last year-->
+  <h5 *ngIf="customerWorks && customer">Work in this year</h5>
+  <br/>
+  <mat-accordion *ngIf="customerWorks && customer">
+
+    <mat-expansion-panel *ngFor="let task of customerWorks; let ind1 index" class="task">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="workId">{{ task.workId }}</span>
+        </mat-panel-title>
+        <mat-panel-description>
+          <span *ngIf="task.deliveredOn">Delivered</span>
+          <span *ngIf="!task.deliveredOn">Working</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!--Upper-->
+      <div *ngFor="let task1 of customerUppers; let ind1 index">
+        <div *ngFor="let task2 of task1; let ind2 index">
+          <mat-card *ngIf="task.workId== task2.workId">
+            <mat-card-header>
+              <mat-card-title>{{ task2.clothName }}</mat-card-title>
+              <mat-card-subtitle>{{ task2.note }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="upper">
+                <button class="measure" mat-button><p class="measurment">{{ task2.height }}</p><p class="title">Height</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.front }}</p><p class="title">Front</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.collar }}</p><p class="title">Collar</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.shoulder }}</p><p class="title">Shoulder</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.sleeve }}</p><p class="title">Sleeve</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.sleeveWidth }}</p><p class="title">Biceps</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.cuff }}</p><p class="title">Cuff</p></button>
+              </div>
+              <!--work status-->
+              <mat-card id="workStatsus">
+                <mat-card-content>
+                  <mat-progress-bar mode="Indeterminate" [value]="task2.status"></mat-progress-bar>
+
+                  <div class="regular">
+                    <!--Status 1-->
+                    <button class="common clothTake" (click)="changeStatus(task2.workId, task2.clothId, 1, 1, true)" mat-button>
+                      <mat-icon *ngIf="task2.status< 0" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 0" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 0? 'rgb(20, 120, 180)': '#c5cae9' }">Cloth recived</p>
+                    </button>
+                    <!--Status 1-->
+                    <!--Status 2-->
+                    <button class="common measurments" (click)="changeStatus(task2.workId, task2.clothId, 1, 20, true)" mat-button>
+                      <mat-icon *ngIf="task2.status< 20" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 20" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 20? 'rgb(20, 120, 180)': '#c5cae9' }">Measurment taken</p>
+                    </button>
+                    <!--Status 2-->
+                    <!--Status 3-->
+                    <button class="common cutting" (click)="changeStatus(task2.workId, task2.clothId, 1, 40, true)" mat-button>
+                      <mat-icon *ngIf="task2.status< 40" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 40" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 40? 'rgb(20, 120, 180)': '#c5cae9' }">Cutting done</p>
+                    </button>
+                    <!--Status 3-->
+                    <!--Status 4-->
+                    <button class="common inStiching" mat-button>
+                      <mat-icon *ngIf="task2.status< 60" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 60" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" class="regular" *ngIf="task2.status== 60"><span style="color: black"><b>{{ task2.assignTo | stringFirst | upperCase }}</b></span> stiching</p>
+                      <p class="regular"*ngIf="task2.status< 60" style="color: black">Stiching</p>
+                      <p class="regular"*ngIf="task2.status> 60">stiched by&nbsp;<span style="color: rgb(20,120,180)"><b>{{ task2.assignTo | stringFirst | upperCase }}</b></span></p>
+                    </button>
+                    <!--Status 4-->
+                    <button class="common ready" (click)="changeStatus(task2.workId, task2.clothId, 1, 80, true)" mat-button>
+                      <mat-icon *ngIf="task2.status< 80" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 80" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 80? 'rgb(20, 120, 180)': '#c5cae9' }">Ready to delivery</p>
+                    </button>
+                    <!--Status 4-->
+                    <!--Status 5-->
+                    <button class="common delivered" mat-button>
+                      <mat-icon *ngIf="task2.status< 100" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 100" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 100? 'rgb(20, 120, 180)': '#c5cae9' }">Product delivered</p>
+                    </button>
+                    <!--Status 5-->
+                  </div>
+                  
+                  <!--While opening on small screen-->
+                    <div class="mobile">
+                      <div [ngSwitch]="task2.status" class="statusText">
+                        <p *ngSwitchCase="1"><b>Cloth taken from customer</b></p>
+                        <p *ngSwitchCase="20"><b>Measurments taken</b></p>
+                        <p *ngSwitchCase="40"><b>Cutting complete</b></p>
+                        <p *ngSwitchCase="60">
+                          <b>
+                            Cloth is stiching by
+                            <span style="color: rgb(20, 120, 180); padding-left: 3px;">{{ task2.assignTo }}</span>
+                          </b>
+                        </p>
+                        <p *ngSwitchCase="80"><b>Ready to delivery</b></p>
+                        <p *ngSwitchCase="100"><b>Product delivered</b></p>
+                      </div>
+                    </div>
+                   <!--While opening on small screen-->
+                  <!--Stiching assign to employee-->
+                  <div *ngIf="task2.status== 40" class="assign">
+                    <button mat-raised-button [matMenuTriggerFor]="employee"><b>Assign resource for stiching</b></button>
+                    <mat-menu #employee="matMenu">
+                      <button mat-menu-item (click)="assignEmployee(task2.workId, task2.clothId, 1, emp.userId, emp.name, true)" *ngFor="let emp of employeeList">
+                        {{ emp.name }}
+                        <small *ngIf="emp.mobileNo" style="color: rgb(20, 120, 180)">| {{emp.mobileNo}}</small>
+                      </button>
+                    </mat-menu>
+                  </div>
+                  <!--Stiching assign to employee-->
+                </mat-card-content>
+              </mat-card>
+              <!--work status-->
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <!--Upper-->
+      <!--Lower-->
+      <div *ngFor="let task1 of customerLowers; let ind1 index">
+        <div *ngFor="let task2 of task1; let ind2 index">
+          <mat-card *ngIf="task.workId== task2.workId">
+            <mat-card-header>
+              <mat-card-title>{{ task2.clothName }}</mat-card-title>
+              <mat-card-subtitle>{{ task2.note }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="lower">
+                <button class="measure" mat-button><p class="measurment">{{ task2.height }}</p><p class="title">Height</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.knee }}</p><p class="title">Knee</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.waist }}</p><p class="title">Waist</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.seat }}</p><p class="title">Seat</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.thigh }}</p><p class="title">Thigh</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.bottom }}</p><p class="title">Bottom</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ task2.underline }}</p><p class="title">Underline</p></button>
+              </div>
+              <!--work status-->
+              <mat-card id="workStatsus">
+                <mat-card-content>
+                  <mat-progress-bar mode="Indeterminate" [value]="task2.status"></mat-progress-bar>
+
+                  <div>
+                    <!--Status 1-->
+                    <button class="common clothTake" (click)="changeStatus(task2.workId, task2.clothId, 2, 1, false)" mat-button>
+                      <mat-icon *ngIf="task2.status< 0" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 0" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 0? 'rgb(20, 120, 180)': '#c5cae9' }">Cloth recived</p>
+                    </button>
+                    <!--Status 1-->
+                    <!--Status 2-->
+                    <button class="common measurments" (click)="changeStatus(task2.workId, task2.clothId, 2, 20, false)" mat-button>
+                      <mat-icon *ngIf="task2.status< 20" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 20" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 20? 'rgb(20, 120, 180)': '#c5cae9' }">Measurment taken</p>
+                    </button>
+                    <!--Status 2-->
+                    <!--Status 3-->
+                    <button class="common cutting" (click)="changeStatus(task2.workId, task2.clothId, 2, 40, false)" mat-button>
+                      <mat-icon *ngIf="task2.status< 40" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 40" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 40? 'rgb(20, 120, 180)': '#c5cae9' }">Cutting done</p>
+                    </button>
+                    <!--Status 3-->
+                    <!--Status 4-->
+                    <button class="common inStiching" mat-button>
+                      <mat-icon *ngIf="task2.status< 60" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 60" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" *ngIf="task2.status== 60"><span style="color: black"><b>{{ task2.assignTo | stringFirst | upperCase }}</b></span> stiching</p>
+                      <p class="regular" *ngIf="task2.status< 60" style="color: black">Stiching</p>
+                      <p class="regular" *ngIf="task2.status> 60">stiched by&nbsp;<span style="color: rgb(20,120,180)"><b>{{ task2.assignTo | stringFirst | upperCase }}</b></span></p>
+                    </button>
+                    <!--Status 4-->
+                    <button class="common ready" (click)="changeStatus(task2.workId, task2.clothId, 2, 80, false)" mat-button>
+                      <mat-icon *ngIf="task2.status< 80" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 80" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 80? 'rgb(20, 120, 180)': '#c5cae9' }">Ready to delivery</p>
+                    </button>
+                    <!--Status 4-->
+                    <!--Status 5-->
+                    <button class="common delivered" mat-button>
+                      <mat-icon *ngIf="task2.status< 100" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="task2.status>= 100" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': task2.status>= 100? 'rgb(20, 120, 180)': '#c5cae9' }">Product delivered</p>
+                    </button>
+                    <!--Status 5-->
+                  </div>
+
+                  <!--While opening on small screen-->
+                  <div class="mobile">
+                    <div [ngSwitch]="task2.status" class="statusText">
+                      <p *ngSwitchCase="1"><b>Cloth taken from customer</b></p>
+                      <p *ngSwitchCase="20"><b>Measurments taken</b></p>
+                      <p *ngSwitchCase="40"><b>Cutting complete</b></p>
+                      <p *ngSwitchCase="60">
+                        <b>
+                          Cloth is stiching by
+                          <span style="color: rgb(20, 120, 180); padding-left: 3px;">{{ task2.assignTo }}</span>
+                        </b>
+                      </p>
+                      <p *ngSwitchCase="80"><b>Ready to delivery</b></p>
+                      <p *ngSwitchCase="100"><b>Product delivered</b></p>
+                    </div>
+                  </div>
+                  <!--While opening on small screen-->
+                  <!--Stiching assign to employee-->
+                  <div *ngIf="task2.status== 40" class="assign">
+                    <button mat-raised-button [matMenuTriggerFor]="employee"><b>Assign resource for stiching</b></button>
+                    <mat-menu #employee="matMenu">
+                      <button mat-menu-item (click)="assignEmployee(task2.workId, task2.clothId, 2, emp.userId, emp.name, false)" *ngFor="let emp of employeeList">
+                        {{ emp.name }}
+                        <small *ngIf="emp.mobileNo" style="color: rgb(20, 120, 180)">| {{emp.mobileNo}}</small>
+                      </button>
+                    </mat-menu>
+                  </div>
+                  <!--Stiching assign to employee-->
+                </mat-card-content>
+              </mat-card>
+              <!--work status-->
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <!--Lower-->
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!--Work In last year-->
+  <!--Work Id-->
+  <div *ngIf="works">
+    <mat-card class="worksSearch">
+      <mat-card-header>
+        <button mat-icon-button class="closing" (click)="goBack()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-card-title>
+          <span style="color: rgb(20, 120, 180)"><b>{{ works.workId }}</b></span>
+          <span>&nbsp;<b>{{ works.userId }}</b></span>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <span style="color: rgba(20, 120, 180, 1)">{{ works.createdBy | stringFirst }}</span>
+          created this on 
+          <span style="color: rgba(20, 120, 180, 1)">{{ works.createdOn | date }}</span>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!--upper-->
+        <div *ngIf="upper">
+          <mat-card class="productsSearch" *ngFor="let product of upper">
+            <mat-card-header>
+              <mat-card-title>
+                <span style="color: rgb(20, 120, 180)">{{ product.clothId }}</span>
+                <span>&nbsp;{{ product.clothName }}</span>
+              </mat-card-title>
+              <mat-card-subtitle>{{ product.note }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+
+              <div class="upper">
+                <button class="measure" mat-button><p class="measurment">{{ product.height }}</p><p class="title">Height</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.front }}</p><p class="title">Front</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.collar }}</p><p class="title">Collar</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.shoulder }}</p><p class="title">Shoulder</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.sleeve }}</p><p class="title">Sleeve</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.sleeveWidth }}</p><p class="title">Biceps</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.cuff }}</p><p class="title">Cuff</p></button>
+              </div>
+
+              <!--work status-->
+              <mat-card id="workStatsus">
+                <mat-card-content>
+                  <mat-progress-bar mode="Indeterminate" [value]="product.status"></mat-progress-bar>
+
+                  <div >
+                    <!--Status 1-->
+                    <button class="common clothTake" (click)="changeStatus(product.workId, product.clothId, 3, 1, true)" mat-button>
+                      <mat-icon *ngIf="product.status< 0" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 0" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 0? 'rgb(20, 120, 180)': '#c5cae9' }">Cloth recived</p>
+                    </button>
+                    <!--Status 1-->
+                    <!--Status 2-->
+                    <button class="common measurments" (click)="changeStatus(product.workId, product.clothId, 3, 20, true)" mat-button>
+                      <mat-icon *ngIf="product.status< 20" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 20" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 20? 'rgb(20, 120, 180)': '#c5cae9' }">Measurment taken</p>
+                    </button>
+                    <!--Status 2-->
+                    <!--Status 3-->
+                    <button class="common cutting" (click)="changeStatus(product.workId, product.clothId, 3, 40, true)" mat-button>
+                      <mat-icon *ngIf="product.status< 40" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 40" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 40? 'rgb(20, 120, 180)': '#c5cae9' }">Cutting done</p>
+                    </button>
+                    <!--Status 3-->
+                    <!--Status 4-->
+                    <button class="common inStiching" mat-button>
+                      <mat-icon *ngIf="product.status< 60" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 60" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" *ngIf="product.status== 60"><span style="color: black"><b>{{ product.assignTo | stringFirst | upperCase }}</b></span> stiching</p>
+                      <p class="regular" *ngIf="product.status< 60" style="color: black">Stiching</p>
+                      <p class="regular" *ngIf="product.status> 60">stiched by&nbsp;<span style="color: rgb(20,120,180)"><b>{{ product.assignTo | stringFirst | upperCase }}</b></span></p>
+                    </button>
+                    <!--Status 4-->
+                    <button class="common ready" (click)="changeStatus(product.workId, product.clothId, 3, 80, true)" mat-button>
+                      <mat-icon *ngIf="product.status< 80" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 80" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 80? 'rgb(20, 120, 180)': '#c5cae9' }">Ready to delivery</p>
+                    </button>
+                    <!--Status 4-->
+                    <!--Status 5-->
+                    <button class="common delivered"  mat-button>
+                      <mat-icon *ngIf="product.status< 100" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 100" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 100? 'rgb(20, 120, 180)': '#c5cae9' }">Product delivered</p>
+                    </button>
+                    <!--Status 5-->
+                  </div>
+
+                  <!--While opening on small screen-->
+                  <div class="mobile">
+                    <div [ngSwitch]="product.status" class="statusText">
+                      <p *ngSwitchCase="1"><b>Cloth taken from customer</b></p>
+                      <p *ngSwitchCase="20"><b>Measurments taken</b></p>
+                      <p *ngSwitchCase="40"><b>Cutting complete</b></p>
+                      <p *ngSwitchCase="60">
+                        <b>
+                          Cloth is stiching by
+                          <span style="color: rgb(20, 120, 180); padding-left: 3px;">{{ product.name }}</span>
+                        </b>
+                      </p>
+                      <p *ngSwitchCase="80"><b>Ready to delivery</b></p>
+                      <p *ngSwitchCase="100"><b>Product delivered</b></p>
+                    </div>
+                  </div>
+                  <!--While opening on small screen-->
+                  <!--Stiching assign to employee-->
+                  <div *ngIf="product.status== 40" class="assign">
+                    <button mat-raised-button [matMenuTriggerFor]="employee"><b>Assign resource for stiching</b></button>
+                    <mat-menu #employee="matMenu">
+                      <button mat-menu-item (click)="assignEmployee(product.workId, product.clothId, 3, emp.userId, emp.name, true)" *ngFor="let emp of employeeList">
+                        {{ emp.name }}
+                        <small *ngIf="emp.mobileNo" style="color: rgb(20, 120, 180)">| {{emp.mobileNo}}</small>
+                      </button>
+                    </mat-menu>
+                  </div>
+                  <!--Stiching assign to employee-->
+                </mat-card-content>
+              </mat-card>
+              <!--work status-->
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <!--upper-->
+        <!--lower-->
+        <div *ngIf="lower">
+          <mat-card class="productsSearch" *ngFor="let product of lower">
+            <mat-card-header>
+              <mat-card-title>
+                <span style="color: rgb(20, 120, 180)">{{ product.clothId }}</span>
+                <span>&nbsp;{{ product.clothName }}</span>
+              </mat-card-title>
+              <mat-card-subtitle>{{ product.note }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+
+              <div class="lower">
+                <button class="measure" mat-button><p class="measurment">{{ product.height }}</p><p class="title">Height</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.knee }}</p><p class="title">Knee</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.waist }}</p><p class="title">Waist</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.seat }}</p><p class="title">Seat</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.thigh }}</p><p class="title">Thigh</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.bottom }}</p><p class="title">Bottom</p></button>
+                <button class="measure" mat-button><p class="measurment">{{ product.underline }}</p><p class="title">Underline</p></button>
+              </div>
+
+              <!--work status-->
+              <mat-card id="workStatsus">
+                <mat-card-content>
+                  <mat-progress-bar mode="Indeterminate" [value]="product.status"></mat-progress-bar>
+
+                  <div>
+                    <!--Status 1-->
+                    <button class="common clothTake" (click)="changeStatus(product.workId, product.clothId, 4, 1, false)" mat-button>
+                      <mat-icon *ngIf="product.status< 0" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 0" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 0? 'rgb(20, 120, 180)': '#c5cae9' }">Cloth recived</p>
+                    </button>
+                    <!--Status 1-->
+                    <!--Status 2-->
+                    <button class="common measurments" (click)="changeStatus(product.workId, product.clothId, 4, 20, false)" mat-button>
+                      <mat-icon *ngIf="product.status< 20" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 20" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 20? 'rgb(20, 120, 180)': '#c5cae9' }">Measurment taken</p>
+                    </button>
+                    <!--Status 2-->
+                    <!--Status 3-->
+                    <button class="common cutting" (click)="changeStatus(product.workId, product.clothId, 4, 40, false)" mat-button>
+                      <mat-icon *ngIf="product.status< 40" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 40" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 40? 'rgb(20, 120, 180)': '#c5cae9' }">Cutting done</p>
+                    </button>
+                    <!--Status 3-->
+                    <!--Status 4-->
+                    <button class="common inStiching" mat-button>
+                      <mat-icon *ngIf="product.status< 60" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 60" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" *ngIf="product.status== 60"><span style="color: black"><b>{{ product.assignTo | stringFirst | upperCase }}</b></span> stiching</p>
+                      <p class="regular" *ngIf="product.status< 60" style="color: black">Stiching</p>
+                      <p class="regular" *ngIf="product.status> 60">stiched by&nbsp;<span style="color: rgb(20,120,180)"><b>{{ product.assignTo | stringFirst | upperCase }}</b></span></p>
+                    </button>
+                    <!--Status 4-->
+                    <button class="common ready" (click)="changeStatus(product.workId, product.clothId, 4, 80, false)" mat-button>
+                      <mat-icon *ngIf="product.status< 80" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 80" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 80? 'rgb(20, 120, 180)': '#c5cae9' }">Ready to delivery</p>
+                    </button>
+                    <!--Status 4-->
+                    <!--Status 5-->
+                    <button class="common delivered" mat-button>
+                      <mat-icon *ngIf="product.status< 100" style="color: black; background-color:#c5cae9; ">access_time</mat-icon>
+                      <mat-icon *ngIf="product.status>= 100" style="color: white; background-color:rgb(20, 120, 180);">done</mat-icon>
+                      <p class="regular" [ngStyle]="{ 'color': product.status>= 100? 'rgb(20, 120, 180)': '#c5cae9' }">Product delivered</p>
+                    </button>
+                    <!--Status 5-->
+                  </div>
+
+                  <!--While opening on small screen-->
+                  <div class="mobile">
+                    <div [ngSwitch]="product.status" class="statusText">
+                      <p *ngSwitchCase="1"><b>Cloth taken from customer</b></p>
+                      <p *ngSwitchCase="20"><b>Measurments taken</b></p>
+                      <p *ngSwitchCase="40"><b>Cutting complete</b></p>
+                      <p *ngSwitchCase="60">
+                        <b>
+                          Cloth is stiching by
+                          <span style="color: rgb(20, 120, 180); padding-left: 3px;">{{ product.name }}</span>
+                        </b>
+                      </p>
+                      <p *ngSwitchCase="80"><b>Ready to delivery</b></p>
+                      <p *ngSwitchCase="100"><b>Product delivered</b></p>
+                    </div>
+                  </div>
+                  <!--While opening on small screen-->
+                  <!--Stiching assign to employee-->
+                  <div *ngIf="product.status== 40" class="assign">
+                    <button mat-raised-button [matMenuTriggerFor]="employee"><b>Assign resource for stiching</b></button>
+                    <mat-menu #employee="matMenu">
+                      <button mat-menu-item (click)="assignEmployee(product.workId, product.clothId, 4, emp.userId, emp.name, false)" *ngFor="let emp of employeeList">
+                        {{ emp.name }}
+                        <small *ngIf="emp.mobileNo" style="color: rgb(20, 120, 180)">| {{emp.mobileNo}}</small>
+                      </button>
+                    </mat-menu>
+                  </div>
+                  <!--Stiching assign to employee-->
+                </mat-card-content>
+              </mat-card>
+              <!--work status-->
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <!--lower-->
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!--Work Id-->
+  <!--No result found-->
+  <mat-card *ngIf="!customer && !works" style="text-align: center">
+    <mat-card-header>
+      <button mat-icon-button class="closing" (click)="goBack()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <p style="margin: 100px 100px">
+        <b>
+          No result&nbsp;<mat-icon style="color: rgb(20, 120, 180)">sentiment_very_dissatisfied</mat-icon>!
+        </b>
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <!--No result found-->
+
+</div>
+<!--search-->

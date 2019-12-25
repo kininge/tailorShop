@@ -1,0 +1,75 @@
+::ng-deep.mat-dialog-title
+{
+    text-align: center!important;
+    .workId
+    {
+        color: rgb(20, 120, 180)!important;
+    }
+    .productName
+    {
+
+    }
+}
+::ng-deep.mat-step-header {
+  padding: 0 !important;
+  display: none !important
+}
+::ng-deep.mat-stepper-horizontal-line {
+  display: none !important
+}
+.feedbackArea
+{
+    text-align: center!important;
+    .fitArea
+    {
+
+    }
+    .styleArea
+    {
+
+    }
+    .qualityArea
+    {
+
+    }
+    .textArea
+    {
+        text-align: center!important;
+        ::ng-deep.mat-form-field-infix
+        {
+            width: 100% !important;
+        }
+        
+    }
+    .title
+    {
+        text-align: center!important;
+    }
+    .feedbackHearts
+    {
+        text-align: center!important;
+        ::ng-deep.mat-icon-button
+        {
+            width: 30px!important;
+            ::ng-deep.mat-icon
+            {
+                width: 30px!important;
+                height: 30px!important;
+                
+            }
+            ::ng-deep.material-icons
+            {
+                font-size: 30px!important;
+                width: 30px!important;
+            }
+        }
+    }
+    .bottom
+    {
+        text-align: right!important;
+        ::ng-deep.matStepperNext
+        {
+            color: rgb(20, 120, 180)!important;
+        }
+    }
+}

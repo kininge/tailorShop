@@ -1,0 +1,60 @@
+
+<div id="application">
+  <!-- heading section-->
+  <div id="top">
+
+    <!--Logo and logIn-->
+    <div>
+      <!--Logo-->
+      <button id="logo" mat-button>
+        <img class="logo-card" src="../../assets/image/StichwellLogoBlueBlack.png" />
+      </button>
+      <!--Logo-->
+      <!--Log details-->
+      <button id="logIn" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon style="color: rgb(66, 66, 66); vertical-align: bottom !important; margin-bottom: 9px !important;">person</mat-icon>
+        <b>
+          <span style="color: rgb(66, 66, 66)"> Hello </span>
+          <span style="color: rgb(20, 120, 180)">{{ user.name | stringFirst | upperCase }}</span>
+        </b>
+      </button>
+      <mat-menu #menu="matMenu" yPosition="below">
+        <button mat-menu-item (click)="logOut()">Log out</button>
+      </mat-menu>
+      <!--Log details-->
+    </div>
+    <!--Logo and logIn-->
+
+    <br />
+    <br />
+    <br />
+
+    <!--Nav tabs -->
+    <div id="navbar">
+      <mat-tab-group>
+
+        <mat-tab label="Home">
+          <app-home></app-home>
+        </mat-tab>
+        <mat-tab label="About" *ngIf="user.userType1== 'creater'">
+          <app-about></app-about>
+        </mat-tab>
+        <mat-tab label="Work" *ngIf="user.userType1!= 'customer'">
+          <app-work></app-work>
+        </mat-tab>
+        <mat-tab label="Partners" *ngIf="user.userType1== 'master' || user.userType1== 'manager'">
+          <app-partners></app-partners>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+    <!--Nav tabs-->
+  </div>
+
+  <!--Footer-->
+  <div id="bottom">
+    <h5 style="margin: 0;">&copy; ${{ year }} StichwellTailors </h5>
+  </div>
+  <!--Footer-->
+</div>
+      

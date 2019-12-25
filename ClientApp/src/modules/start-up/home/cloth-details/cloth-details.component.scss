@@ -1,0 +1,95 @@
+.card {
+  margin: 10px 0px !important;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+
+
+  .card-header {
+    background-color: white !important;
+    border-bottom: 1px solid rgba(0,0,0,.125) !important;
+  }
+
+  ::ng-deep.more-button {
+    z-index: 2;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0 !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border-radius: 50%;
+
+    ::ng-deep:hover {
+      background-color: rgb(20, 120, 180) !important;
+      color: white;
+    }
+  }
+
+  .card-content {
+    margin-top: 20px;
+    text-align: center;
+
+    .count {
+      color: rgb(20, 120, 180);
+      font-size: 28px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      //Tablet
+      @media only screen and (max-width: 959px) {
+      }
+      //Mobile screen
+      @media only screen and (max-width: 599px) {
+        padding-top: 0;
+        margin-top: 0;
+        font-size: 20px;
+      }
+    }
+
+    .name {
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+
+  .card-actions {
+    text-align: center;
+
+    .cloth-startDate {
+      position: absolute;
+      bottom: 5px;
+      left: 50px;
+      width: 120px;
+      color: rgb(20, 120, 180);
+      //Tablet
+      @media only screen and (max-width: 959px) {
+      }
+      //Mobile screen
+      @media only screen and (max-width: 599px) {
+        left: 30px;
+        width: 110px;
+      }
+    }
+
+    .cloth-endDate {
+      position: absolute;
+      bottom: 5px;
+      right: 50px;
+      width: 120px;
+      color: rgb(20, 120, 180);
+      //Tablet
+      @media only screen and (max-width: 959px) {
+      }
+      //Mobile screen
+      @media only screen and (max-width: 599px) {
+        right: 30px;
+        width: 110px;
+      }
+    }
+  }
+}

@@ -1,0 +1,503 @@
+.mat-card {
+  margin: 5px;
+  //Tablet
+  @media only screen and (max-width: 959px) {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  //Mobile screen
+  @media only screen and (max-width: 599px) {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+
+  .mat-card-header {
+    .mat-card-title {
+      .deliveryDays {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 18px;
+        width: 180px;
+
+        ::ng-deep.mat-form-field-infix {
+          .mat-input-element {
+            color: rgb(20, 120, 180);
+          }
+
+          ::ng-deep.mat-form-field-label-wrapper {
+            //Tablet
+            @media only screen and (max-width: 959px) {
+            }
+            //mobile
+            @media only screen and (max-width: 599px) {
+              display: none !important;
+            }
+          }
+          //Tablet
+          @media only screen and (max-width: 959px) {
+          }
+          //mobile
+          @media only screen and (max-width: 599px) {
+            padding-bottom: 1px !important;
+          }
+        }
+        //Tablet
+        @media only screen and (max-width: 959px) {
+        }
+        //mobile
+        @media only screen and (max-width: 599px) {
+          width: 80px !important;
+          margin: 0 !important;
+          max-height: 50px !important;
+          top: -20px;
+          padding-bottom: 2px !important;
+        }
+      }
+
+      .unit {
+        position: absolute;
+        top: 30px;
+        right: 20px;
+        font-size: 20px;
+
+        @media only screen and (min-width: 850px) and (max-width: 1200px) {
+        }
+
+        @media only screen and (min-width: 570) and (max-width: 850px) {
+        }
+
+        @media only screen and (min-width: 415px) and (max-width: 570px) {
+        }
+
+        @media only screen and (min-width: 340px) and (max-width: 415px) {
+          top: -2px !important;
+        }
+
+        @media only screen and (min-width: 0px) and (max-width: 340px) {
+          top: -2px !important;
+        }
+      }
+    }
+  }
+
+  .mat-card-subtitle {
+    .user {
+      color: rgba(20, 120, 180, 0.7);
+    }
+  }
+}
+
+  .mat-card-content {
+    margin-top: 10px;
+
+    .mat-accordion {
+      .mat-expansion-panel {
+        .mat-expansion-panel-header {
+          .mat-panel-title {
+          }
+
+          .mat-panel-description {
+          }
+        }
+
+        .mat-card-content {
+          .mat-accordion {
+            .mat-expansion-panel {
+              .mat-expansion-panel-header {
+                .mat-panel-title {
+                }
+
+                ::ng-deep.mat-panel-description {
+                  padding-left: 200px !important;
+                }
+              }
+
+              .mat-expansion-panel-content {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+::ng-deep.shop
+{
+    margin-left: 300px!important;
+    //Tablet
+    @media only screen and (max-width: 959px)
+    {
+        margin-left: 120px!important;
+    }
+    //mobile
+    @media only screen and (max-width: 599px)
+    {
+        display: none!important;    
+    }
+}
+.deliveryDate
+{
+    color: rgb(20, 120, 180)!important;
+    margin-left: 5px!important;
+}
+.workId
+{
+    color: rgb(20, 120, 180)!important;
+    margin-right: 5px!important;
+}
+.measurment
+{
+    color: rgb(20, 120, 180)!important;
+    font-size: 16px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    //Tablet
+    @media only screen and (max-width: 959px)
+    {
+      
+    }
+    //Mobile screen
+    @media only screen and (max-width: 599px) 
+    {
+      right: 30px;
+      width: 64px!important;
+      margin-top: 0; 
+    }
+}
+.title
+{
+    font-size: 12px;
+    padding-top: 0;
+    margin-top: 0;
+}
+::ng-deep.mat-expansion-panel-body
+{
+    
+    //Tablet
+    @media only screen and (max-width: 959px)
+    {
+        padding: 0!important;
+    }
+    //Mobile screen
+    @media only screen and (max-width: 599px) 
+    {
+        padding: 0!important;
+    }
+}
+.measure
+{
+    //Tablet
+    @media only screen and (max-width: 959px)
+    {
+      padding-left: 5px; 
+      padding-right: 5px;
+    }
+    //Mobile screen
+    @media only screen and (max-width: 599px) 
+    {
+      width: 64px!important;
+      padding-left: 0; 
+      padding-right: 0; 
+    }
+}
+
+//#region work status
+#workStatsus {
+  min-height: 90px !important;
+  //Tablet
+  @media only screen and (max-width: 959px) {
+    margin: 0 !important;
+  }
+  //mobile
+  @media only screen and (max-width: 599px) {
+    margin: 0 !important;
+  }
+
+  .mat-progress-bar {
+    width: 98% !important;
+    height: 10px !important;
+    padding-left: 25px !important;
+    margin-top: 10px !important;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      padding-left: 5px !important;
+      margin-top: 20px !important;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      height: 12px !important;
+      padding-left: 5px !important;
+      margin-top: 20px !important;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      height: 12px !important;
+      padding-left: 5px !important;
+      margin-top: 21px !important;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      height: 12px !important;
+      padding-left: 5px !important;
+      margin-top: 21px !important;
+    }
+
+    .mat-progress-bar-background {
+      background-color: rgb(220, 220, 220) !important;
+      fill: rgb(220, 220, 220) !important;
+    }
+
+    ::ng-deep.mat-progress-bar-fill::after {
+      background-color: rgb(20, 120, 180) !important;
+    }
+  }
+
+  ::ng-deep.material-icons {
+    font-size: 30px;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      font-size: 25px;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      font-size: 25px;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      font-size: 23px;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      font-size: 23px;
+    }
+  }
+
+  .mat-icon {
+    color: black;
+    vertical-align: middle;
+    padding: 5px;
+    height: 40px;
+    width: 40px;
+    background-color: #c5cae9; //rgb(220, 220, 220);
+    border-radius: 50% !important;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      height: 35px;
+      width: 35px;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      height: 35px;
+      width: 35px;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      padding: 1px;
+      height: 25px;
+      width: 25px;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      padding: 1px;
+      height: 25px;
+      width: 25px;
+    }
+  }
+
+  .common {
+    position: absolute;
+    top: 12px;
+    padding: 0 !important;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+    }
+  }
+
+  .clothTake {
+    left: 1%;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      left: -1.5%;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      left: -1.5%;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      left: -5%;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      left: -5%;
+    }
+  }
+
+  .measurments {
+    left: 18%;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      left: 17%;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      left: 13%;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      left: 15%;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      left: 13%;
+    }
+  }
+
+  .cutting {
+    left: 38%;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      left: 35%;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      left: 32%;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      left: 32%;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      left: 30%;
+    }
+  }
+
+  .inStiching {
+    left: 56%;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      left: 56%;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      left: 50%;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      left: 49%;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      left: 48%;
+    }
+  }
+
+  .ready {
+    left: 74%;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      left: 74%;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      left: 70%;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      left: 68%;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      left: 65%;
+    }
+  }
+
+  .delivered {
+    left: 93%;
+
+    @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    }
+
+    @media only screen and (min-width: 570px) and (max-width: 850px) {
+      left: 91%;
+    }
+
+    @media only screen and (min-width: 415px) and (max-width: 570px) {
+      left: 88%;
+    }
+
+    @media only screen and (min-width: 340px) and (max-width: 415px) {
+      left: 84%;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 340px) {
+      left: 80%;
+    }
+  }
+
+  .statusText {
+    padding-top: 18px;
+    text-align: center;
+  }
+
+  .assign {
+    text-align: center;
+    margin-top: 70px;
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    .mat-raised-button {
+      color: rgb(0, 0, 0) !important;
+    }
+
+    ::ng-deep.mat-menu-item {
+      font-family: Arial, Helvetica, sans-serif !important;
+    }
+    //Tablet
+    @media only screen and (max-width: 959px) {
+      margin-top: 30px !important;
+    }
+    //mobile
+    @media only screen and (max-width: 599px) {
+      margin-top: 30px !important;
+    }
+  }
+}
+//#endregion

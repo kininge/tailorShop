@@ -1,0 +1,32 @@
+<div id="logInSection">
+<h2 class="logTitle">Log In</h2>
+
+<p id="status" *ngIf="logInState=== false" style="color: red">
+  <b>username or password is incorrect</b>
+</p>
+
+<form ngSubmit="logIn(logInForm)" #logInForm="ngForm" autocomplete="on">
+  <mat-form-field id="logUsername">
+    <mat-label>Username</mat-label>
+    <input type="text" name="username" matInput autocomplete="on" [(ngModel)]="userName" required />
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+  <br />
+  <mat-form-field id="logPassword">
+    <mat-label>Password</mat-label>
+    <input [type]="passwordVisibility" name="password" matInput autocomplete="on" [(ngModel)]="password" required />
+    <mat-icon class="visibilityIcon" *ngIf="passwordVisibility=== 'password'" (click)="changePasswordVisibility()" matSuffix>visibility</mat-icon>
+    <mat-icon class="visibilityIcon" *ngIf="passwordVisibility=== 'text'" (click)="changePasswordVisibility()" matSuffix>visibility_off</mat-icon>
+  </mat-form-field>
+  <br />
+  <button id="logInButton" type="submit" mat-raised-button [disabled]="!userName || !password" (click)="logIn()">Log In</button>
+  <div class="logButtons">
+    <a id="forgetPassword" (click)="changePage('forget-password')"><small>Forget Password?</small></a>
+    <button id="registerButton" type="button" style="color: rgb(20, 120, 180);" (click)="changePage('register')" mat-button><b>Register</b></button>
+  </div>
+</form>
+</div>
+
+
+
+

@@ -1,0 +1,107 @@
+
+<mat-card *ngIf="user.userType1=== 'employee' || user.userType1=== 'master' || user.userType1=== 'creater'" id="inRegister">
+  <mat-card-content>
+
+    <!--clothOutShort-->
+    <form *ngIf="pageType=== 'short'" id="clothOutShort" (ngSubmit)="shortClothOut(clothOutShortForm)" #clothOutShortForm="ngForm">
+      <h2>Add New Cloth Out</h2>
+      <button type="button" style="color: rgb(20, 120, 180)!important;" (click)="openIncomeRegister()" *ngIf="user.userType1=== 'master' || user.userType1=== 'creater'" id="toIncomeRegister" mat-icon-button
+              matRipple matRippleCentered="true" matRippleUnbounded="true" matRippleRadius="4000" matRippleColor="black">
+        <mat-icon style="vertical-align: bottom !important; margin-bottom: 10px !important;">send</mat-icon>
+      </button>
+      <br />
+      <mat-form-field id="clothOutShortWorkId" class="clothOutShortItem">
+        <input type="number" matInput placeholder="Work Id" name="workId" [(ngModel)]="workId" required>
+        <mat-icon matSuffix>receipt</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field id="clothOutShortamount" class="clothOutShortItem">
+        <input type="number" matInput placeholder="Amount" name="amount" [(ngModel)]="amount" required>
+        <span matSuffix>&#x20B9;</span>
+      </mat-form-field>
+
+      <button type="submit" matRipple matRippleCentered="true" matRippleUnbounded="true" matRippleRadius="4000"
+              matRippleColor="rgb(20, 120, 180)" [disabled]="!clothOutShortForm.valid" id="addClothOut" mat-raised-button>
+        Add Cloth Out
+      </button>
+    </form>
+    <!--clothOutShort-->
+    <!--ClothOutAll-->
+    <div id="incomeRegister" class="mat-elevation-z8" *ngIf="pageType=== 'incomeRegister'" style="margin: 5px!important;">
+      <h2 id="incomeRegisterTitle" style="display: inline-block !important; padding: 20px 30px;">Income Register</h2>
+      <button type="button" id="closingIcon" (click)="openIncomeRegister()" matRipple matRippleCentered="true"
+              matRippleUnbounded="true" matRippleRadius="4000" matRippleColor="rgb(20, 120, 180)" mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <!--Search filter-->
+      <mat-form-field id="search" style="margin: 20px 0 0 28px!important;">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search">
+        <mat-icon matPrefix style="font-size: 20px; height: 20px; width: 20px">search</mat-icon>
+      </mat-form-field>
+      <!--Search filter-->
+      <!--Table-->
+      <table mat-table [dataSource]="data" matSort>
+
+        <!-- work id column -->
+        <ng-container matColumnDef="workId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Work Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.workId}} </td>
+          <td mat-footer-cell *matFooterCellDef><b> Total</b> </td>
+        </ng-container>
+        <!-- work id column -->
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <!-- Shop Column -->
+        <ng-container matColumnDef="shop">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Shop </th>
+          <td mat-cell *matCellDef="let element"> {{element.shopName}} <span *ngIf="element.branchName">| {{element.branchName}}</span> </td>
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <!-- Amount Column -->
+        <ng-container matColumnDef="pay">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+          <td mat-cell *matCellDef="let element"> {{element.pay}} </td>
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="deliveredOn">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Delivery Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.deliveredOn | date }} </td>
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <!-- Added By Column -->
+        <ng-container matColumnDef="addedBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Added By </th>
+          <td mat-cell *matCellDef="let element"> {{element.addedBy | stringFirst | upperCase }} </td>
+          <td mat-footer-cell *matFooterCellDef><b> {{getTotalNumbers()}}</b> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="[ 'workId', 'name', 'shop', 'pay', 'deliveredOn', 'addedBy' ]"></tr>
+        <tr mat-row *matRowDef="let row; columns: [ 'workId', 'name', 'shop', 'pay', 'deliveredOn', 'addedBy' ]"
+            [ngStyle]="{ boxShadow: style(row.workId, 'boxShadow'), backgroundColor: style(row.workId, 'backgroundColor'), color: style(row.workId, 'color') }"
+            (mouseover)="workid= row.workId" (mouseout)="workid= undefined" (click)="check(row.workId)"></tr>
+        <tr mat-footer-row *matFooterRowDef="[ 'workId', 'name', 'shop', 'pay', 'deliveredOn', 'addedBy' ]"></tr>
+
+      </table>
+      <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+      <!--Table-->
+    </div>
+    
+    <!--ClothOutAll-->
+
+  </mat-card-content>
+</mat-card>

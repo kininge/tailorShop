@@ -1,0 +1,70 @@
+#news
+{
+  #today
+  {
+    margin: 0 0 10px 0 !important;
+  }
+
+  #yesterday
+  {
+    margin: 0 !important;
+  }
+
+  .clothInData.mat-card
+  {
+    display: inline-block;
+    width: 280px !important;
+    margin: 20px 20px 10px 0 !important;
+    //table
+    @media screen and (max-width: 959px) {
+      width: 240px !important;
+      margin: 15px 10px 5px 0 !important;
+    }
+    //mobile
+    @media screen and (max-width: 599px) {
+    }
+
+    #title {
+      font-size: 17px !important;
+      margin-bottom: 0 !important;
+      //table
+      @media screen and (max-width: 959px) {
+        font-size: 14px !important;
+      }
+      //mobile
+      @media screen and (max-width: 599px) {
+      }
+
+      .workId {
+        color: rgb(20, 120, 180) !important;
+        padding-right: 10px !important;
+      }
+    }
+
+    #subtitle {
+      color: gray !important;
+      margin-top: 5px !important;
+      margin-bottom: 20px !important;
+    }
+
+    .product {
+      display: inline-block !important;
+
+      .count {
+        color: rgb( 20, 120, 180) !important;
+        margin-right: 5px !important;
+      }
+
+      .productName {
+      }
+
+      .comma {
+        margin-right: 20px !important;
+      }
+    }
+
+    .deliveryDate {
+      color: rgb(20, 120, 180) !important;
+    }
+  }
+}

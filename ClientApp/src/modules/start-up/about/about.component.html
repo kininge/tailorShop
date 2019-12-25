@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Create New Shop</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+        <form #personalForm="ngForm">
+
+          <mat-form-field id="shopName">
+            <mat-label>Shop Name</mat-label>
+            <input type="text" matInput name="shopName" [(ngModel)]="shopName" #shopname="ngModel" required />
+            <mat-icon matSuffix>store</mat-icon>
+            <mat-hint *ngIf="shopname.hasError('required') && shopname.touched" style="color: red">Shop name is mandatory</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field id="branchName">
+            <mat-label>Branch Name</mat-label>
+            <input type="text" name="branchName" matInput  [(ngModel)]="branchName" #branchname="ngModel" required />
+            <mat-icon matSuffix>store</mat-icon>
+            <mat-hint *ngIf="branchname.hasError('required') && branchname.touched" style="color: red">Branch name is mandatory</mat-hint>
+          </mat-form-field>
+
+          <button type="button" (click)="createShop()" class="register nextRight" [disabled]="!personalForm.valid" [style.color]="personalForm.valid ? 'rgb(20, 120, 180)' : gray" mat-raised-button >
+            <b>Create Shop</b>
+          </button>
+
+        </form>
+
+  </mat-card-content>
+</mat-card>

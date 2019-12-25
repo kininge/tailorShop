@@ -1,0 +1,111 @@
+.logTitle
+{
+  margin-bottom: 30px !important;
+  margin-top: 80px !important;
+
+  @media only screen and (min-width: 0px) and (max-width: 415px)
+  {
+    margin-bottom: 10px !important;
+    margin-top: 0 !important;
+    padding-top: 80px !important;
+  }
+
+  @media only screen and (min-width: 568px) and (max-width: 750px)
+  {
+    margin-top: 60px !important;
+  }
+
+  @media only screen and (min-width: 415px) and (max-width: 568px)
+  {
+  }
+}
+
+#logUsername
+{
+  width: 300px !important;
+
+  @media only screen and (min-width: 0px) and (max-width: 415px)
+  {
+    width: 250px !important;
+  }
+
+  @media only screen and (min-width: 568px) and (max-width: 750px)
+  {
+  }
+
+  @media only screen and (min-width: 415px) and (max-width: 568px)
+  {
+  }
+}
+
+#logPassword
+{
+  width: 300px !important;
+
+  @media only screen and (min-width: 0px) and (max-width: 415px)
+  {
+    width: 250px !important;
+  }
+
+  @media only screen and (min-width: 568px) and (max-width: 750px)
+  {
+
+  }
+
+  @media only screen and (min-width: 415px) and (max-width: 568px)
+  {
+
+  }
+}
+
+.visibilityIcon
+{
+  cursor: pointer !important;
+}
+
+#logInButton
+{
+  margin-top: 30px !important;
+  display: inline-grid;
+  min-width: 300px !important;
+  background-color: rgb(20, 120, 180) !important;
+  color: white !important;
+
+  @media only screen and (min-width: 0px) and (max-width: 415px)
+  {
+    min-width: 250px !important;
+  }
+
+  @media only screen and (min-width: 568px) and (max-width: 750px)
+  {
+  }
+
+  @media only screen and (min-width: 415px) and (max-width: 568px)
+  {
+  }
+}
+
+.logButtons
+{
+  padding-top: 10px !important;
+  display: inline-block;
+  margin: auto !important;
+
+  #forgetPassword
+  {
+    cursor: pointer !important;
+    margin-right: 50px !important;
+
+    &:hover
+    {
+      font-weight: 700 !important; 
+      color: rgb(20, 120, 180) !important;
+    }
+  }
+
+  #registerButton
+  {
+  }
+}
+
+

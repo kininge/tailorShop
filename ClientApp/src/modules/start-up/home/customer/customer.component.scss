@@ -1,0 +1,118 @@
+.statusContainer {
+  display: inline-block !important;
+  //mobile
+  @media screen and (min-width: 0px) and (max-width: 415px) {
+    margin-left: 5% !important;
+  }
+
+  .clothInData {
+    display: inline-block !important;
+    width: 200px !important;
+    padding: 0 !important;
+    margin: 20px 20px 10px 0 !important;
+    //table
+    @media screen and (max-width: 959px) {
+    }
+    //mobile
+    @media screen and (max-width: 599px) {
+    }
+  }
+
+  .feedback {
+    margin: 0 !important;
+    padding: 5px 5px 5px 10px !important;
+    background-color: rgb(20, 120, 180) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    border-radius: 4px;
+
+    .feedbackText {
+      padding-top: 10px !important;
+      margin: 0 !important;
+    }
+
+    ::ng-deep.mat-raised-button {
+      border-radius: 50% !important;
+      width: 40px !important;
+      height: 40px !important;
+      padding: 0 !important;
+      min-width: 40px !important;
+      cursor: pointer !important;
+
+      ::ng-deep.mat-icon {
+        padding-top: 1px !important;
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 30px !important;
+      }
+    }
+  }
+
+  .imageAndProgresser {
+    height: 200px !important;
+    //margin: 0!important;
+    //padding: 0!important;
+    .image {
+      max-height: 150px !important;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 15px;
+    }
+
+    ::ng-deep circle {
+      stroke: rgb(20, 120, 180) !important;
+      stroke-width: 4% !important;
+    }
+
+    ::ng-deep.mat-progress-spinner {
+      z-index: 1 !important;
+      width: 200px !important;
+      height: 200px !important;
+      top: -182px !important;
+      left: 10px !important;
+    }
+
+    .statusPercentage {
+      margin: 0 !important;
+      color: rgb(20, 120, 180);
+      max-width: 18px !important;
+      top: 85px !important;
+      left: 65px !important;
+      position: relative !important;
+      font-weight: 800;
+    }
+  }
+
+  .statusText {
+    background-color: rgb(20, 120, 180) !important;
+    padding: 5px !important;
+    text-align: center !important;
+    border-radius: 4px;
+
+    .statusStage {
+      margin: 0 !important;
+      color: white !important;
+    }
+
+    .statusExtra {
+      margin: 0 !important;
+    }
+  }
+
+  .details {
+    background-color: rgb(20, 120, 180) !important;
+    padding: 5px !important;
+    display: flex;
+    border-radius: 4px;
+
+    .workId {
+      color: white !important;
+      margin-left: 10px !important;
+      margin-right: 30px !important;
+    }
+
+    .productName {
+    }
+  }
+}

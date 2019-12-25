@@ -1,0 +1,238 @@
+#inRegister {
+  margin: 0px 5px !important;
+}
+
+::ng-deep.mat-menu-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+#closingIcon {
+  display: inline-block;
+  float: right;
+  top: 20px;
+  right: 20px;
+
+  @media only screen and (min-width: 0px) and (max-width: 320px) {
+    top: 5px;
+    right: 5px;
+  }
+
+  @media only screen and (min-width: 320px) and (max-width: 415px) {
+    top: 5px;
+    right: 5px;
+  }
+
+  @media only screen and (min-width: 415px) and (max-width: 750px) {
+    top: 10px;
+    right: 10px;
+  }
+
+  @media only screen and (min-width: 415px) and (max-width: 568px) {
+    top: 7px;
+    right: 7px;
+  }
+}
+::ng-deep.mat-card {
+  margin: 10px !important;
+  //table
+  @media screen and (max-width: 959px) {
+    padding: 5px !important;
+  }
+  //mobile
+  @media screen and (max-width: 599px) {
+    padding: 5px !important;
+  }
+
+  ::ng-deep.mat-card-content {
+    //#region clothOutShort
+    ::ng-deep#clothOutShort {
+      //border: 2px solid black!important;
+      //border-radius: 8px!important;
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+      //table
+      @media screen and (max-width: 959px) {
+      }
+      //mobile
+      @media screen and (max-width: 599px) {
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+      }
+    }
+
+    h2 {
+      //color: rgb(20, 120, 180);
+      font-size: 20px;
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+      display: initial !important;
+    }
+
+    ::ng-deep#toIncomeRegister {
+      //margin-left: 10px!important;
+      width: 36px !important;
+      height: 36px !important;
+      z-index: 1;
+      //table
+      @media screen and (max-width: 959px) {
+      }
+      //mobile
+      @media screen and (max-width: 599px) {
+      }
+    }
+
+    ::ng-deep.mat-input-element {
+      caret-color: rgb(20, 120, 180) !important;
+    }
+
+    ::ng-deep.clothOutShortItem {
+      padding: 20px 20px 0 20px !important;
+    }
+
+    ::ng-deep#clothOutShortWorkId {
+      padding-left: 0 !important;
+
+      ::ng-deep.mat-form-field-infix {
+        width: 100px !important;
+        padding-top: 5px !important;
+        //table
+        @media screen and (max-width: 959px) {
+          width: 140px !important
+        }
+        //mobile
+        @media screen and (max-width: 599px) {
+          width: 200px !important
+        }
+      }
+      //table
+      @media screen and (max-width: 959px) {
+      }
+      //mobile
+      @media screen and (max-width: 599px) {
+        padding-left: 5px !important;
+      }
+    }
+
+    ::ng-deep#clothOutShortCustomerName {
+      ::ng-deep.mat-form-field-infix {
+        width: 350px !important;
+        padding-top: 5px !important;
+        //table
+        @media screen and (max-width: 959px) {
+          width: 260px !important;
+        }
+        //mobile
+        @media screen and (max-width: 599px) {
+          width: 200px !important;
+        }
+      }
+      //table
+      @media screen and (max-width: 959px) {
+      }
+      //mobile
+      @media screen and (max-width: 599px) {
+        padding-left: 5px !important;
+      }
+    }
+
+    ::ng-deep#clothOutShortShop {
+      ::ng-deep.mat-form-field-infix {
+        width: 200px !important;
+        padding-top: 5px !important;
+        //table
+        @media screen and (max-width: 959px) {
+          width: 150px !important;
+        }
+        //mobile
+        @media screen and (max-width: 599px) {
+          width: 200px !important;
+        }
+      }
+      //table
+      @media screen and (max-width: 959px) {
+        padding: 0 !important;
+      }
+      //mobile
+      @media screen and (max-width: 599px) {
+        padding-left: 5px !important;
+      }
+    }
+
+    ::ng-deep#clothOutShortamount {
+      ::ng-deep.mat-form-field-infix {
+        width: 80px !important;
+        padding-top: 5px !important;
+        //table
+        @media screen and (max-width: 959px) {
+          width: 80px !important;
+        }
+        //mobile
+        @media screen and (max-width: 599px) {
+          width: 69px !important;
+        }
+      }
+      //table
+      @media screen and (max-width: 959px) {
+      }
+      //mobile
+      @media screen and (max-width: 599px) {
+        padding-left: 5px !important;
+      }
+    }
+
+    ::ng-deep#addClothOut {
+      background-color: rgb(20, 120, 180) !important;
+      color: white !important;
+      //z-index: 1!important;
+      //table
+      @media screen and (max-width: 959px) {
+      }
+      //mobile
+      @media screen and (max-width: 599px) {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+      }
+    }
+    //#endregion
+    //#region clothOutAll
+    #incomeRegister {
+      #search {
+        ::ng-deep.mat-form-field-prefix {
+          margin-right: 5px !important;
+        }
+
+        ::ng-deep.mat-input-element {
+          padding-bottom: 7px !important;
+        }
+      }
+
+      table {
+        width: 100% !important;
+
+        ::ng-deep.mat-header-row {
+          background-color: rgb(20, 120, 180) !important;
+
+          ::ng-deep.mat-header-cell {
+            color: white !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+          }
+        }
+
+        ::ng-deep.mat-sort-header-arrow {
+          color: black !important;
+        }
+
+        td {
+          cursor: pointer !important;
+        }
+      }
+
+      ::ng-deep.mat-paginator {
+        border-top: 2px solid rgb(20, 120, 180) !important;
+      }
+    }
+    //#endRegion
+  }
+}

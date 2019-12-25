@@ -1,0 +1,221 @@
+<mat-card class="completed" *ngIf="user.userType== 'customer'">
+  <!--Header-->
+  <mat-card-header>
+    <mat-card-title>
+      Hey
+      <span style="color: rgb(20, 120, 180)">{{ user.name | stringFirst | upperCase }}</span>
+      <span> are happy you choose us to serve you</span>
+    </mat-card-title>
+  </mat-card-header>
+  <!--Header-->
+  <!--content-->
+  <mat-card-content>
+    <mat-accordion>
+
+      <!--privious work-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><b><span style="color: rgb(20, 120, 180)">Previous</span> work</b></mat-panel-title>
+          <mat-panel-description>
+            <b><span style="color: rgb(20, 120, 180)">Thank</span><span style="color: black"> you</span></b>!
+            <span *ngIf="!mobile" style="padding-left: 5px;"> to gave us this all work</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <!--Product-->
+        <div class="statusContainer" *ngFor="let work of customerWorks">
+
+          <!--Upper-->
+          <div class="statusContainer" *ngFor="let products of customerUppers">
+            <div class="statusContainer" *ngFor="let product of products">
+              <div class="statusContainer" *ngIf="work.workId== product.workId">
+                <mat-card class="clothInData" *ngIf="product.status== 100">
+                  <mat-card-content>
+
+                    <!--feedback-->
+                    <div class="feedback">
+                      <p class="feedbackText" *ngIf="(product.feedbackId!= 0)">
+                        <b><span style="color: white">Thank</span> you!</b>
+                      </p>
+                      <p class="feedbackText" *ngIf="(product.feedbackId== 0)">
+                        <b>Please give <span style="color: white">feedback</span></b>
+                      </p>
+                      <button mat-raised-button (click)="callFeedback(work.workId, product.clothId, product.clothName, product.note, product.feedbackId, product.fit, product.style, product.quality, product.feedback1, true )">
+                        <mat-icon [ngStyle]="{ color: (product.feedbackId!= 0)? 'red': 'black' }">favorite</mat-icon>
+                      </button>
+                    </div>
+                    <!--feedback-->
+                    <!--Product-->
+                    <div class="imageAndProgresser">
+                      <img class="image" src="assets\image\shirt.png" alt="pant" />
+                    </div>
+                    <div class="details">
+                      <div class="workId"><b>{{ work.workId }} </b></div>
+                      <div class="productName"><b>{{ product.clothName }}</b></div>
+                    </div>
+                    <!--Product-->
+
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+          <!--Upper-->
+          <!--Lower-->
+          <div class="statusContainer" *ngFor="let products of customerLowers">
+            <div class="statusContainer" *ngFor="let product of products">
+              <div class="statusContainer" *ngIf="work.workId== product.workId">
+                <mat-card class="clothInData" *ngIf="product.status== 100">
+                  <mat-card-content>
+
+                    <!--feedback-->
+                    <div class="feedback">
+                      <p class="feedbackText" *ngIf="(product.feedbackId!= 0)">
+                        <b><span style="color: white">Thank</span> you!</b>
+                      </p>
+                      <p class="feedbackText" *ngIf="(product.feedbackId== 0)">
+                        <b>Please give <span style="color: white">feedback</span></b>
+                      </p>
+                      <button mat-raised-button (click)="callFeedback(work.workId, product.clothId, product.clothName, product.note, product.feedbackId, product.fit, product.style, product.quality, product.feedback1, false )">
+                        <mat-icon [ngStyle]="{ color: (product.feedbackId!= 0)? 'red': 'black' }">favorite</mat-icon>
+                      </button>
+                    </div>
+                    <!--feedback-->
+                    <!--Product-->
+                    <div class="imageAndProgresser">
+                      <img class="image" src="assets\image\pant.png" alt="pant" />
+                    </div>
+                    <div class="details">
+                      <div class="workId"><b>{{ work.workId }} </b></div>
+                      <div class="productName"><b>{{ product.clothName }}</b></div>
+                    </div>
+                    <!--Product-->
+
+                </mat-card-content>
+              </mat-card>
+              </div>
+            </div>
+          </div>
+          <!--Lower-->
+
+        </div>
+        <!--Product-->
+
+      </mat-expansion-panel>
+      <!--privious work-->
+      <!--current work-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><b><span style="color: rgb(20, 120, 180)">Current</span> work</b></mat-panel-title>
+          <mat-panel-description><b><span style="color: rgb(20, 120, 180)">Thank</span><span style="color: black"> you</span></b>!
+          <span *ngIf="!mobile" style="padding-left: 5px;"> to gave us this work</span></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <!--Product-->
+        <div class="statusContainer" *ngFor="let work of customerWorks">
+
+          <!--Upper-->
+          <div class="statusContainer" *ngFor="let products of customerUppers">
+            <div class="statusContainer" *ngFor="let product of products">
+              <div class="statusContainer" *ngIf="work.workId== product.workId">
+                <mat-card class="clothInData" *ngIf="100> product.status">
+                  <mat-card-content>
+
+                    <div class="details">
+                      <div class="workId"><b>{{ work.workId }} </b></div>
+                      <div class="productName"><b>{{ product.clothName }}</b></div>
+                    </div>
+                    <div class="imageAndProgresser">
+                      <h1 class="statusPercentage">{{ product.status }}%</h1>
+                      <img class="image" src="assets\image\shirt.png" alt="shirt" />
+                      <mat-progress-spinner [diameter]="180" class="statusSpinner" mode="determinate" [value]="product.status"></mat-progress-spinner>
+                    </div>
+                    <!--Bottom text-->
+                    <div class="statusText" [ngSwitch]="product.status" *ngIf="100> product.status">
+                      <div class="status" *ngSwitchCase="1">
+                        <p class="statusStage"><b>Cloth is taken</b></p>
+                        <p class="statusExtra"><b>Please plan to give measurments</b></p>
+                      </div>
+                      <div class="status" *ngSwitchCase="20">
+                        <p class="statusStage"><b>Measurment are taken</b></p>
+                        <p class="statusExtra"><b>Cloth will cut soon</b></p>
+                      </div>
+                      <div class="status" *ngSwitchCase="40">
+                        <p class="statusStage"><b>Cloth get cut</b></p>
+                        <p class="statusExtra"><b>Cloth will go fo stiching</b></p>
+                      </div>
+                      <div class="status" *ngSwitchCase="60">
+                        <p class="statusStage"><b>Your cloth is stiching by</b></p>
+                        <p class="statusExtra"><b>{{ product.assignTo }}</b></p>
+                      </div>
+                      <div class="status" *ngSwitchCase="80">
+                        <p class="statusStage"><b>Your dreamed cloth completed</b></p>
+                        <p class="statusExtra"><b>We are egar to see you in this</b></p>
+                      </div>
+                    </div>
+                    <!--Bottom text-->
+
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+           </div>
+          <!--Upper-->
+          <!--Lower-->
+          <div class="statusContainer" *ngFor="let products of customerLowers">
+            <div class="statusContainer" *ngFor="let product of products">
+              <div class="statusContainer" *ngIf="work.workId== product.workId">
+                <mat-card class="clothInData" *ngIf="100> product.status">
+                  <mat-card-content>
+
+                    <div class="details">
+                      <div class="workId"><b>{{ work.workId }} </b></div>
+                      <div class="productName"><b>{{ product.clothName }}</b></div>
+                    </div>
+                    <div class="imageAndProgresser">
+                      <h1 class="statusPercentage">{{ product.status }}%</h1>
+                      <img class="image" src="assets\image\pant.png" alt="shirt" />
+                      <mat-progress-spinner [diameter]="180" class="statusSpinner" mode="determinate" [value]="product.status"></mat-progress-spinner>
+                    </div>
+                    <!--Bottom text-->
+                    <div class="statusText" [ngSwitch]="product.status" *ngIf="100> product.status">
+                      <div class="status" *ngSwitchCase="1">
+                        <p class="statusStage"><b>Cloth is taken</b></p>
+                        <p class="statusExtra"><b>Please plan to give measurments</b></p>
+                      </div>
+                      <div class="status" *ngSwitchCase="20">
+                        <p class="statusStage"><b>Measurment are taken</b></p>
+                        <p class="statusExtra"><b>Cloth will cut soon</b></p>
+                      </div>
+                      <div class="status" *ngSwitchCase="40">
+                        <p class="statusStage"><b>Cloth get cut</b></p>
+                        <p class="statusExtra"><b>Cloth will go for stiching</b></p>
+                      </div>
+                      <div class="status" *ngSwitchCase="60">
+                        <p class="statusStage"><b>Your cloth is stiching by</b></p>
+                        <p class="statusExtra"><b>{{ product.assignTo }}</b></p>
+                      </div>
+                      <div class="status" *ngSwitchCase="80">
+                        <p class="statusStage"><b>Your dreamed cloth completed</b></p>
+                        <p class="statusExtra"><b>We are egar to see you in this</b></p>
+                      </div>
+                    </div>
+                    <!--Bottom text-->
+
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+          <!--Lower-->
+
+        </div>
+        <!--Product-->
+
+      </mat-expansion-panel>
+      <!--privious work-->
+
+    </mat-accordion>
+  </mat-card-content>
+  <!--content-->
+</mat-card>

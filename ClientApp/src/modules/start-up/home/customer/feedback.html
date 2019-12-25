@@ -1,0 +1,85 @@
+<h1 mat-dialog-title>
+    Feedback for 
+    <span class="workId"><b>{{ data.workId }} </b></span>
+    <span class="productName">{{ data.productName }}</span>
+</h1>
+<mat-horizontal-stepper class="feedbackArea" #stepper linear="true">
+  <!--Fitting-->
+  <mat-step>
+    <ng-template matStepLabel><b>Fitting</b></ng-template>
+    <div class="fitArea">
+      <p class="title">
+        How is fitting of
+        <span style="color: rgb(20, 120, 180)">
+          <b>{{ data.productName }}</b>
+        </span>?
+      </p>
+      <div class="feedbackHearts">
+        <button mat-icon-button (click)="data.fit= star" *ngFor="let star of [1,2,3,4,5];">
+          <mat-icon [ngStyle]="{ color: data.fit>= star? 'rgb(20, 120, 180)': 'rgb(220, 220, 220)' }">star</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="bottom">
+      <button mat-button matStepperNext style="color: rgb(20, 120, 180)"><b>Next</b></button>
+    </div>
+  </mat-step>
+  <!--Fitting-->
+  <!--Style-->
+  <mat-step>
+    <ng-template matStepLabel>Style</ng-template>
+    <div class="styleArea">
+      <p class="title">
+        How are
+        <span *ngFor="let style of data.remarks; last as last" style="color: rgb(20, 120, 180);">
+          <b>{{ style }}</b>
+          <b *ngIf="!last" style="color: black">,&nbsp;</b>
+        </span>&nbsp;styles for <span style="color: rgb(20, 120, 180)">
+          <b>{{ data.productName }}</b>
+        </span>?
+      </p>
+      <div class="feedbackHearts">
+        <button mat-icon-button (click)="data.style= star" *ngFor="let star of [1,2,3,4,5];">
+          <mat-icon [ngStyle]="{ color: data.style>= star? 'rgb(20, 120, 180)': 'rgb(220, 220, 220)' }">star</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="bottom">
+      <button mat-button matStepperPrevious><b>Back</b></button>
+      <button mat-button matStepperNext style="color: rgb(20, 120, 180)"><b>Next</b></button>
+    </div>
+  </mat-step>
+  <!--Style-->
+  <!--Stiching quality-->
+  <mat-step>
+    <ng-template matStepLabel>Stiching quality</ng-template>
+    <div class="qualityArea">
+      <p class="title">How is stiching quality of <span style="color: rgb(20, 120, 180)"><b>{{ data.productName }}</b></span>?</p>
+      <div class="feedbackHearts">
+        <button mat-icon-button (click)="data.workQuality= star" *ngFor="let star of [1,2,3,4,5];">
+          <mat-icon [ngStyle]="{ color: data.workQuality>= star? 'rgb(20, 120, 180)': 'rgb(220, 220, 220)' }">star</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="bottom">
+      <button mat-button matStepperPrevious><b>Back</b></button>
+      <button mat-button matStepperNext style="color: rgb(20, 120, 180)"><b>Next</b></button>
+    </div>
+  </mat-step>
+  <!--Stiching quality-->
+  <!--Text-->
+  <mat-step>
+    <ng-template matStepLabel>Text</ng-template>
+    <div class="textArea">
+      <p class="title">Do you wanna help us to improve our work?<small style="color: gray">&nbsp;(500 characters max)</small></p>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Leave comment" [(ngModel)]="data.text" style="width: 300px;" required></textarea>
+      </mat-form-field>
+    </div>
+    <div class="bottom">
+      <button mat-button matStepperPrevious><b>Back</b></button>
+      <button mat-button [mat-dialog-close]="{ fit: data.fit, style: data.style, quality: data.workQuality, text: data.text }" cdkFocusInitial style="color: rgb(20, 120, 180)"><b>Submit</b></button>
+    </div>
+  </mat-step>
+  <!--Text-->
+</mat-horizontal-stepper>

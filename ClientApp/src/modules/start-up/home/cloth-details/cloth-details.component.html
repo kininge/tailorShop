@@ -1,0 +1,130 @@
+<div *ngIf="clothInVisibility || clothOutVisibility">
+  <mat-grid-list cols="12" rowHeight="320px">
+    <!--ClothIn card-->
+    <div *ngIf="clothInVisibility">
+      <mat-grid-tile *ngFor="let card of clothCard | async" [colspan]="card.cols" [rowspan]="card.rows">
+        <mat-card class="card">
+          <mat-card-header class="card-header">
+            <mat-card-title><b>Cloth In</b>
+              <button matRipple matRippleCentered="true" matRippleUnbounded="false" matRippleRadius="4000" 
+                matRippleColor="rgb(20, 120, 180)" class="more-button" (click)="makeUnvisible('clothInVisibility')">
+                <mat-icon class="mat-repple-element">
+                  close
+                </mat-icon>
+              </button>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="card-content">
+            <button class="cloth-data-button" mat-button>
+              <p class="count">{{ clothIn.shirt }}</p>
+              <p class="name">Shirt</p>
+            </button>
+
+            <button class="cloth-data-button" mat-button>
+              <p class="count">{{ clothIn.pant }}</p>
+              <p class="name">Pant</p>
+            </button>
+
+            <button class="cloth-data-button" mat-button>
+              <p class="count">{{ clothIn.safariShirt }}</p>
+              <p class="name">Safari Shirt</p>
+            </button>
+
+            <button class="cloth-data-button" mat-button>
+              <p class="count">{{ clothIn.safariPant }}</p>
+              <p class="name">Safari Pant</p>
+            </button>
+
+            <button class="cloth-data-button" mat-button>
+              <p class="count">{{ clothIn.other }}</p>
+              <p class="name">Other</p>
+            </button>
+          </mat-card-content>
+          <mat-card-actions class="card-actions">
+            <!--start date-->
+            <mat-form-field class="cloth-startDate">
+              <mat-label>Start Date</mat-label>
+              <input matInput [value]="startDate" [matDatepicker]="picker3" disabled>
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <!--start date-->
+            <!--end date-->
+            <mat-form-field class="cloth-endDate">
+              <mat-label>End Date</mat-label>
+              <input matInput [value]="endDate" [matDatepicker]="picker4" disabled>
+              <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker4 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <!--end date-->
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+    <!--ClothIn card-->
+    <!--ClothOut card-->
+    <div *ngIf="clothOutVisibility">
+      <mat-grid-tile *ngFor="let card of clothCard | async" [colspan]="card.cols" [rowspan]="card.rows">
+          <mat-card class="card">
+            <mat-card-header class="card-header">
+              <mat-card-title><b>Cloth Out</b>
+                <button matRipple matRippleCentered="true" matRippleUnbounded="false" matRippleRadius="4000"
+                  matRippleColor="rgb(20, 120, 180)" class="more-button" (click)="makeUnvisible('clothOutVisibility')">
+                  <mat-icon class="mat-repple-element">
+                    close
+                  </mat-icon>
+                </button>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="card-content">
+              <button class="cloth-data-button" mat-button>
+                <p class="count">{{ clothOut.shirt }}</p>
+                <p class="name">Shirt</p>
+              </button>
+
+              <button class="cloth-data-button" mat-button>
+                <p class="count">{{ clothOut.pant }}</p>
+                <p class="name">Pant</p>
+              </button>
+
+              <button class="cloth-data-button" mat-button>
+                <p class="count">{{ clothOut.safariShirt }}</p>
+                <p class="name">Safari Shirt</p>
+              </button>
+
+              <button class="cloth-data-button" mat-button>
+                <p class="count">{{ clothOut.safariPant }}</p>
+                <p class="name">Safari Pant</p>
+              </button>
+
+              <button class="cloth-data-button" mat-button>
+                <p class="count">{{ clothOut.other }}</p>
+                <p class="name">Other</p>
+              </button>
+            </mat-card-content>
+            <mat-card-actions class="card-actions">
+              <!--start date-->
+              <mat-form-field class="cloth-startDate">
+                <mat-label>Start Date</mat-label>
+                <input matInput [value]="startDate" [matDatepicker]="picker3" disabled>
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker3 disabled="false"></mat-datepicker>
+              </mat-form-field>
+              <!--start date-->
+              <!--end date-->
+              <mat-form-field class="cloth-endDate">
+                <mat-label>End Date</mat-label>
+                <input matInput [value]="endDate" [matDatepicker]="picker4" disabled>
+                <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker4 disabled="false"></mat-datepicker>
+              </mat-form-field>
+              <!--end date-->
+            </mat-card-actions>
+          </mat-card>
+      </mat-grid-tile>
+    </div>
+    <!--ClothOut card-->
+  </mat-grid-list>
+</div>
+<div *ngIf="!clothInVisibility && !clothOutVisibility" style="height: 10px !important">
+</div>

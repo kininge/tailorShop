@@ -1,0 +1,81 @@
+<!--news-->
+<div id="news">
+
+  <!--Today-->
+  <mat-card id="today">
+    <mat-card-header>
+      <mat-card-title>Cloth came today</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div style="margin-top: 10px !important; margin-left: 15px !important; margin-right: 15px !important;">
+        <mat-card class="clothInData" *ngFor="let today of todayRestCloth; let ind= index;">
+          <mat-card-content>
+            <div class="clothInTitle">
+              <p id="title"><b><span class="workId">{{ today.workId }}</span>{{ today.name }}</b></p>
+              <p id="subtitle">{{ today.shop }}&nbsp;{{ today.branch }}</p>
+            </div>
+            <br />
+            <div class="product" *ngFor="let product of todayUpperCloths;">
+              <div *ngIf="today.workId== product.workId">
+                <span class="count">{{ product.productCount }}</span>
+                <span class="productName">{{ product.cloth }}</span>
+              </div>
+            </div>
+            <div class="product" *ngFor="let product of todayLowerCloths;">
+              <div *ngIf="today.workId== product.workId">
+                <span class="count">{{ product.productCount }}</span>
+                <span class="productName">{{ product.cloth }}</span>
+              </div>
+            </div>
+            <br />
+            <p>Dilivery Date: <b class="deliveryDate">{{ today.deliveryDate | date }}</b></p>
+          </mat-card-content>
+        </mat-card>
+        <div *ngIf="noToday" style="color: rgb(200, 200, 200)!important;">
+          <mat-icon style="vertical-align: bottom; margin-bottom: 2px !important;">sentiment_very_dissatisfied</mat-icon><span><b> No work came today!</b></span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <!--Today-->
+  <!--Yesterday-->
+  <mat-card id="yesterday">
+    <mat-card-header>
+      <mat-card-title>Cloth came yesterday</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div style="margin-top: 10px !important; margin-left: 15px !important; margin-right: 15px !important;">
+        <mat-card class="clothInData" *ngFor="let today of yesterdayRestCloth; let ind= index;">
+          <mat-card-content>
+
+            <div class="clothInTitle">
+              <p id="title"><b><span class="workId">{{ today.workId }}</span>{{ today.name }}</b></p>
+              <p id="subtitle">{{ today.shop }}&nbsp;{{ today.branch }}</p>
+            </div>
+            <br />
+            <div class="product" *ngFor="let product of yesterdayUpperCloths;">
+              <div *ngIf="today.workId== product.workId">
+                <span class="count">{{ product.productCount }}</span>
+                <span class="productName">{{ product.cloth }}</span>
+              </div>
+            </div>
+            <div class="product" *ngFor="let product of yesterdayLowerCloths;">
+              <div *ngIf="today.workId== product.workId">
+                <span class="count">{{ product.productCount }}</span>
+                <span class="productName">{{ product.cloth }}</span>
+              </div>
+            </div>
+            <br />
+            <p>Dilivery Date: <b class="deliveryDate">{{ today.deliveryDate | date }}</b></p>
+          </mat-card-content>
+        </mat-card>
+        <div *ngIf="noYesterday" style="color: rgb(200, 200, 200)!important;">
+          <mat-icon style="vertical-align: bottom; margin-bottom: 2px !important;">sentiment_very_dissatisfied</mat-icon><span><b> No work came yesterday!</b></span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <!--Yesterday-->
+
+</div>
+<!--news-->

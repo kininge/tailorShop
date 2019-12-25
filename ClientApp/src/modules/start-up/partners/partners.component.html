@@ -1,0 +1,194 @@
+<mat-card id="partners">
+  <mat-card-header>
+    <mat-card-title>Create New Partners</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div id="signUpError" *ngIf="registrStatus && !userId">
+      <mat-error style="text-align: center;">Someting is wrong, try once again</mat-error>
+    </div>
+    <div *ngIf="userId" id="signUpOutput">
+      <h5 style="color: rgb(20, 120, 180); text-align: center;">Congrats! user get created successfuly</h5>
+    </div>
+    <mat-horizontal-stepper linear="true" #stepper>
+      <!--Register Personal Data-->
+      <mat-step id="logInStep">
+        <h5 class="subtitle">Personal Data</h5>
+        <br />
+        <form #personalForm="ngForm">
+
+          <mat-form-field id="name">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput name="name" placeholder="Name Father_Name Surname" [(ngModel)]="name" #username="ngModel" required />
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-hint *ngIf="username.hasError('required') && username.touched" style="color: red">Name is mandatory</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field id="email">
+            <mat-label>Email Address</mat-label>
+            <input type="email" name="email" matInput placeholder="someone@somewhere.com" [(ngModel)]="emailAddress" #signupEmailAddress="ngModel" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" />
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-hint *ngIf="signupEmailAddress.dirty && signupEmailAddress.errors?.pattern" style="color: red">Enter correct email address</mat-hint>
+          </mat-form-field>
+
+          <br />
+          <br class="temp" />
+
+          <mat-form-field id="mobileNumber">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput name="mobile" placeholder="7xxxxxxxxx" [(ngModel)]="mobileNo" #mobile="ngModel" pattern="[6-9]{1}[0-9]{9}" />
+            <mat-icon matSuffix>phone_iphone</mat-icon>
+            <mat-hint *ngIf="mobile.dirty && mobile.errors?.pattern" style="color: red">Enter correct mobile number</mat-hint>
+          </mat-form-field>
+
+          <div class="isOnWhatsApp">
+            <section class="example-section">
+              <mat-checkbox class="example-margin" [checked]="isOnWhatsApp" (change)="getWhatsApp()">WhatsApp</mat-checkbox>
+            </section>
+          </div>
+
+          <br />
+          <br class="temp" />
+          <br class="temp" />
+
+          <mat-form-field id="address">
+            <textarea name="address" matInput placeholder="Address" (keyup)="getAddres($event)" [(ngModel)]="address" #add="ngModel" required></textarea>
+            <mat-hint *ngIf="add.hasError('required') && add.touched" style="color: red">Address is mandatory</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field id="birthDate">
+            <input matInput [matDatepicker]="dp3" name="birthdate" placeholder="Birthdate" [(ngModel)]="birthdate" #date="ngModel" required>
+            <mat-datepicker-toggle matSuffix name="birthdate" ngDefaultControl [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #dp3></mat-datepicker>
+            <mat-hint *ngIf="date.hasError('required') && date.touched" style="color: red">Birthdate is mandatory</mat-hint>
+          </mat-form-field>
+
+          <div style="margin-top: 25px !important; margin-left: 50px !important" *ngIf="loggedUser.userType1== 'creater'">
+            <section class="example-section">
+              <mat-checkbox class="example-margin" [checked]="isTestdata" (change)="getTestDataStatus()">Test data</mat-checkbox>
+            </section>
+          </div>
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <button type="button" class="register nextRight" [disabled]="!personalForm.valid" [style.color]="personalForm.valid ? 'rgb(20, 120, 180)' : gray" mat-button matStepperNext>
+            <b>Next</b>
+          </button>
+
+        </form>
+      </mat-step>
+      <!--Register Personal Data-->
+      <!--Register organizational Data-->
+      <mat-step id="organizationalStep">
+        <h5 class="subtitle">Organizational Data</h5>
+        <br />
+
+        <form #organizationalForm="ngForm" id="organizational">
+          <mat-form-field id="shop">
+            <mat-label>Shop</mat-label>
+            <mat-select [(ngModel)]="shopId" name="shopId" #shop="ngModel" required>
+              <mat-option *ngFor="let shop of shops" [value]="shop.shopId">{{ shop.shopName }} | {{ shop.branchName }}</mat-option>
+            </mat-select>
+            <mat-hint *ngIf="shop.hasError('required') && shop.touched" style="color: red">Shop is mandatory</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field id="UserType">
+            <mat-label>Partner Type</mat-label>
+            <mat-select [(ngModel)]="userTypeId" name="userType" #userType1="ngModel" required>
+              <mat-option *ngFor="let user of userType" [value]="user.userTypeId">{{ user.userType1 }}</mat-option>
+            </mat-select>
+            <mat-hint *ngIf="userType1.hasError('required') && userType1.touched" style="color: red">Patner Type is mandatory</mat-hint>
+          </mat-form-field>
+
+          <br />
+
+          <mat-form-field id="question">
+            <mat-label>Question</mat-label>
+            <mat-select [(ngModel)]="questionId" name="questionId" #question="ngModel" required>
+              <mat-option *ngFor="let quetion of quetions" [value]="quetion.questionId">{{ quetion.question }}</mat-option>
+            </mat-select>
+            <mat-hint *ngIf="question.hasError('required') && question.touched" style="color: red">Question is mandatory</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field id="registerAnswer">
+            <mat-label>Answer</mat-label>
+            <input name="answer" matInput [(ngModel)]="registerAnswer" #regiAnswer="ngModel" required />
+            <mat-hint *ngIf="regiAnswer.hasError('required') && regiAnswer.touched" style="color: red">Answer is mandatory</mat-hint>
+          </mat-form-field>
+
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="nextRight">
+            <button type="button" class="register " mat-button matStepperPrevious>
+              <b>Back</b>
+            </button>
+            <button type="button" class="register" [disabled]="!organizationalForm.valid"
+                    [style.color]="organizationalForm.valid ? 'rgb(20, 120, 180)' : gray" mat-button matStepperNext>
+              <b>Next</b>
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <!--Register Personal Data-->
+      <!--Register LogIn Data-->
+      <mat-step>
+        <h5 class="subtitle">LogIn Data</h5>
+        <br />
+
+        <form ngSubmit="register(logInForm)" id="regi" #registerForm="ngForm">
+          <mat-form-field id="registerUsername">
+            <mat-label>Username</mat-label>
+            <input type="text" name="uaername" matInput placeholder="username" [(ngModel)]="registerUsername" #regiUsername="ngModel" (keyup)="checkUsername()" required />
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-hint *ngIf="regiUsername.hasError('required') && regiUsername.touched" style="color: red">Username is mandatory</mat-hint>
+            <mat-hint *ngIf="isUsernameAvailable=== true && regiUsername.valid" style="color: red">Username is not available</mat-hint>
+            <mat-hint *ngIf="isUsernameAvailable=== false && regiUsername.valid" style="color: green">Username is available</mat-hint>
+          </mat-form-field>
+          <br />
+          <mat-form-field id="registerPassword">
+            <mat-label>Password</mat-label>
+            <input [type]="registerPasswordVisibility" name="password" matInput placeholder="password" [(ngModel)]="registerPassword" #regiPassword="ngModel" required />
+            <mat-icon class="visibilityIcon" *ngIf="registerPasswordVisibility=== 'password'" (click)="changePasswordVisibility('text', 'registerPassword')" matSuffix>visibility</mat-icon>
+            <mat-icon class="visibilityIcon" *ngIf="registerPasswordVisibility=== 'text'" (click)="changePasswordVisibility('password', 'registerPassword')" matSuffix>visibility_off</mat-icon>
+            <mat-hint *ngIf="regiPassword.hasError('required') && regiPassword.touched" style="color: red">Password is mandatory</mat-hint>
+          </mat-form-field>
+          <br />
+          <mat-form-field id="registerRePassword">
+            <mat-label>Re-Password</mat-label>
+            <input [type]="registerRePasswordVisibility" name="repassword" matInput placeholder="password" [(ngModel)]="registerRePassword" #regiRePassword="ngModel" required />
+            <mat-icon class="visibilityIcon" *ngIf="registerRePasswordVisibility=== 'password'" (click)="changePasswordVisibility('text', 'registerRePassword')" matSuffix>visibility</mat-icon>
+            <mat-icon class="visibilityIcon" *ngIf="registerRePasswordVisibility=== 'text'" (click)="changePasswordVisibility('password', 'registerRePassword')" matSuffix>visibility_off</mat-icon>
+            <mat-hint *ngIf="regiRePassword.hasError('required') && regiRePassword.touched" style="color: red">Re Password is mandatory</mat-hint>
+            <mat-hint *ngIf="registerPassword!== registerRePassword && regiRePassword.dirty" style="color: red">Password and Re Password should be same</mat-hint>
+            <mat-hint *ngIf="registerPassword=== registerRePassword && regiRePassword.dirty" style="color: green">Password confirmed</mat-hint>
+          </mat-form-field>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="nextRight">
+            <button type="button" mat-button (click)="stepper.reset()" (click)="resetAll()"><b>Canel</b></button>
+            <button type="submit" class="logIn" (click)="stepper.reset()" (click)="register()" mat-raised-button
+                    [disabled]="!registerForm.valid || isUsernameAvailable || !(registerPassword=== registerRePassword)"
+                    [style.color]="(registerForm.valid && !isUsernameAvailable && (registerPassword=== registerRePassword)) ? 'rgb(20, 120, 180)' : gray">
+              <b>Register</b>
+            </button>
+
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <!--Register LogIn Data-->
+  </mat-card-content>
+</mat-card>
